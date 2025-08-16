@@ -10,7 +10,7 @@ This is place for my projects and experiments.
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Tech
 - HTML / CSS (dark theme)
 - JavaScript (animations)
 - GitHub Pages (hosting)
