@@ -5,7 +5,7 @@ This is place for my projects and experiments.
 
 ---
 
-## 🔗 Live Website
+## Live Website
 [Open here](https://KPN-code.github.io/)
 
 ---
