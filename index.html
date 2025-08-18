@@ -142,38 +142,39 @@
     <p>© 2025 Markus Koponen</p>
   </footer>
 
-  <script>
-  async function loadProjects() {
-    const username = "KPN-code";
-    const response = await fetch(`https://api.github.com/users/${username}/repos?sort=created&direction=desc`);
-    const repos = await response.json();
+ <script>
+async function loadProjects() {
+  const username = "KPN-code";
+  const response = await fetch(`https://api.github.com/users/${username}/repos?sort=created&direction=desc`);
+  const repos = await response.json();
 
-    const projectsDiv = document.querySelector(".projects");
-    projectsDiv.innerHTML = "";
+  const projectsDiv = document.querySelector(".projects");
+  projectsDiv.innerHTML = "";
 
-    repos
-      .filter(repo => repo.name.toLowerCase() !== `${username.toLowerCase()}.github.io`) // suodatetaan pois root-pages repo
-      .slice(0, 3) // otetaan 3 uusinta
-      .forEach(repo => {
-        const card = document.createElement("div");
-        card.classList.add("card");
+  repos
+    .filter(repo => repo.name.toLowerCase() !== `${username.toLowerCase()}.github.io`) // suodatetaan root-pages repo
+    .slice(0, 3) // otetaan 3 uusinta
+    .forEach(repo => {
+      const card = document.createElement("div");
+      card.classList.add("card");
 
-        // GitHub Pages -linkki (vain jos EI ole root-repo)
-        const ghPagesUrl = `https://${username}.github.io/${repo.name}/`;
+      // GitHub Pages -linkki
+      const ghPagesUrl = `https://${username}.github.io/${repo.name}/`;
 
-        card.innerHTML = `
-          <h3>${repo.name.replace(/-/g, " ")}</h3>
-          <p>${repo.description || "No description available."}</p>
-          <a href="${repo.html_url}" target="_blank">GitHub →</a><br>
-          <a href="${ghPagesUrl}" target="_blank">Live Demo →</a>
-        `;
+      card.innerHTML = `
+        <h3>${repo.name.replace(/-/g, " ")}</h3>
+        <p>${repo.description || "No description available."}</p>
+        <a href="${repo.html_url}" target="_blank">GitHub →</a><br>
+        <a href="${ghPagesUrl}" target="_blank">Live Demo →</a>
+      `;
 
-        projectsDiv.appendChild(card);
-      });
-  }
+      projectsDiv.appendChild(card);
+    });
+}
 
-  loadProjects();
+loadProjects();
 </script>
+
 
 </body>
 </html>
