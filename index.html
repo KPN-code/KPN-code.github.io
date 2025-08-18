@@ -88,6 +88,7 @@
     .card h3 {
       margin-top: 0;
       color: #38bdf8;
+      text-transform: capitalize;
     }
 
     .card a {
@@ -127,7 +128,7 @@
 <body>
   <header>
     <h1>Hello, my name is Markus </h1>
-    <p>This is my github page and portfolio</p>
+    <p>This is my GitHub page and portfolio</p>
     <nav>
       <a href="#about">About me</a>
       <a href="#projects">Projects</a>
@@ -147,58 +148,45 @@
   <section id="projects">
     <h2>Projects</h2>
     <div class="projects">
-      <div class="card">
-        <h3> xxxx</h3>
-        <p>xxxx.</p>
-        <a href="https://github.com/username/mnist-cnn">Look →</a>
-      </div>
-      <div class="card">
-        <h3> xxxx</h3>
-        <p>xxxx.</p>
-        <a href="https://github.com/username/matriisilaskin">Look →</a>
-      </div>
-      <div class="card">
-        <h3> xxxx3</h3>
-        <p>xxxx.</p>
-        <a href="https://github.com/username/projekti3">Look →</a>
-      </div>
+      <p>Loading projects...</p>
     </div>
   </section>
 
   <section id="contact">
-    <h2>Yhteys</h2>
+    <h2>Contact</h2>
     <p>📧 markkpn008@gmail.com </p>
-    <p>🔗 <a href="https://github.com/KPN-code">GitHub-profile</a></p>
+    <p>🔗 <a href="https://github.com/KPN-code" target="_blank">GitHub-profile</a></p>
   </section>
 
   <footer>
     <p>© 2025 Markus Koponen</p>
   </footer>
+
   <script>
-  async function loadProjects() {
-    const username = "KPN-code";  // <-- GitHub käyttäjänimi
-    const response = await fetch(`https://api.github.com/users/${username}/repos`);
-    const repos = await response.json();
+    async function loadProjects() {
+      const username = "KPN-code";  // <-- GitHub käyttäjänimi
+      const response = await fetch(`https://api.github.com/users/${username}/repos?sort=created&direction=desc`);
+      const repos = await response.json();
 
-    const projectsDiv = document.querySelector(".projects");
-    projectsDiv.innerHTML = ""; // tyhjennetään placeholderit
+      const projectsDiv = document.querySelector(".projects");
+      projectsDiv.innerHTML = ""; // tyhjennetään placeholder
 
-    repos.slice(0, 3).forEach(repo => { // otetaan 3 uusinta
-      const card = document.createElement("div");
-      card.classList.add("card");
+      repos.slice(0, 3).forEach(repo => { // otetaan 3 uusinta
+        const card = document.createElement("div");
+        card.classList.add("card");
 
-      card.innerHTML = `
-        <h3>${repo.name}</h3>
-        <p>${repo.description || "No description available."}</p>
-        <a href="${repo.html_url}" target="_blank">Look →</a>
-      `;
+        card.innerHTML = `
+          <h3>${repo.name.replace(/-/g, " ")}</h3>
+          <p>${repo.description || "No description available."}</p>
+          <a href="${repo.html_url}" target="_blank">GitHub →</a>
+          ${repo.homepage ? `<br><a href="${repo.homepage}" target="_blank">Live Demo →</a>` : ""}
+        `;
 
-      projectsDiv.appendChild(card);
-    });
-  }
+        projectsDiv.appendChild(card);
+      });
+    }
 
-  loadProjects();
-</script>
-
+    loadProjects();
+  </script>
 </body>
 </html>
