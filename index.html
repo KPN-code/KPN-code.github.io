@@ -153,13 +153,12 @@ async function loadProjects() {
 
   repos
     .filter(repo => repo.name.toLowerCase() !== `${username.toLowerCase()}.github.io`) // suodatetaan root-pages repo
-    .slice(0, 3) // otetaan 3 uusinta
     .forEach(repo => {
       const card = document.createElement("div");
       card.classList.add("card");
 
-      // GitHub Pages -linkki
-      const ghPagesUrl = `https://${username}.github.io/${repo.name}/`;
+      // GitHub Pages -linkki (huomaa että välilyönnit korvataan väliviivoilla)
+      const ghPagesUrl = `https://${username}.github.io/${repo.name.replace(/ /g, "-")}/`;
 
       card.innerHTML = `
         <h3>${repo.name.replace(/-/g, " ")}</h3>
@@ -174,6 +173,7 @@ async function loadProjects() {
 
 loadProjects();
 </script>
+
 
 
 </body>
