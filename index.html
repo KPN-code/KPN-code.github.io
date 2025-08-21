@@ -120,7 +120,7 @@
     <h2>About me</h2>
     <p>
       I am a Computer Science student at the University of Turku, passionate about learning and exploring new technologies. 
-      I have experience in HTML, CSS, JavaScript, Java, C, Python, and some hands-on experience with React. 
+      I have experience in HTML, CSS, JavaScript, Java, C, Python, SQL, Linux and some hands-on experience with React. 
       I enjoy building projects that challenge my skills and allow me to grow as a developer.
     </p>
   </section>
@@ -142,7 +142,7 @@
     <p>© 2025 Markus Koponen</p>
   </footer>
 
- <script>
+<script>
 async function loadProjects() {
   const username = "KPN-code";
   const response = await fetch(`https://api.github.com/users/${username}/repos?sort=created&direction=desc`);
@@ -151,28 +151,36 @@ async function loadProjects() {
   const projectsDiv = document.querySelector(".projects");
   projectsDiv.innerHTML = "";
 
-  repos
-    .filter(repo => repo.name.toLowerCase() !== `${username.toLowerCase()}.github.io`) // suodatetaan root-pages repo
-    .forEach(repo => {
-      const card = document.createElement("div");
-      card.classList.add("card");
+  repos.forEach(repo => {
+    // Luo kortti
+    const card = document.createElement("div");
+    card.classList.add("card");
 
-      // GitHub Pages -linkki (huomaa että välilyönnit korvataan väliviivoilla)
-      const ghPagesUrl = `https://${username}.github.io/${repo.name.replace(/ /g, "-")}/`;
+    // GitHub Pages -linkki
+    const ghPagesUrl = `https://${username}.github.io/${repo.name.replace(/ /g, "-")}/`;
 
-      card.innerHTML = `
-        <h3>${repo.name.replace(/-/g, " ")}</h3>
-        <p>${repo.description || "No description available."}</p>
-        <a href="${repo.html_url}" target="_blank">GitHub →</a><br>
-        <a href="${ghPagesUrl}" target="_blank">Live Demo →</a>
-      `;
+    // Jos kyseessä root pages repo → lisätään erikoislinkki tiedostoon
+    let extraLink = "";
+    if (repo.name.toLowerCase() === `${username.toLowerCase()}.github.io`) {
+      extraLink = `<br><a href="https://${username}.github.io/Color%20Palette%20-%20Generator.html" target="_blank">
+        🎨 Color Palette Generator →</a>`;
+    }
 
-      projectsDiv.appendChild(card);
-    });
+    card.innerHTML = `
+      <h3>${repo.name.replace(/-/g, " ")}</h3>
+      <p>${repo.description || "No description available."}</p>
+      <a href="${repo.html_url}" target="_blank">GitHub →</a><br>
+      <a href="${ghPagesUrl}" target="_blank">Live Demo →</a>
+      ${extraLink}
+    `;
+
+    projectsDiv.appendChild(card);
+  });
 }
 
 loadProjects();
 </script>
+
 
 
 
