@@ -156,14 +156,11 @@ async function loadProjects() {
     const card = document.createElement("div");
     card.classList.add("card");
 
-    // GitHub Pages -linkki
-    const ghPagesUrl = `https://${username}.github.io/${repo.name.replace(/ /g, "-")}/`;
-
     // Jos kyseessä root pages repo → lisätään erikoislinkki tiedostoon
     let extraLink = "";
     if (repo.name.toLowerCase() === `${username.toLowerCase()}.github.io`) {
       extraLink = `<br><a href="https://${username}.github.io/Color%20Palette%20-%20Generator.html" target="_blank">
-        🎨 Color Palette Generator →</a>`;
+        Color Palette Generator →</a>`;
     }
 
     card.innerHTML = `
