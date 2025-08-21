@@ -109,20 +109,25 @@ async function loadProjects() { // funktio
   projectsDiv.innerHTML = ""; // tyhjennys
 
   repos.forEach(repo => { // silmukka
+    
+    // jos kyseessä on github.io-repo → ei näytetä nimeä vaan vain linkki
+    if (repo.name.toLowerCase() === `${username.toLowerCase()}.github.io`) {
+      const card = document.createElement("div");
+      card.classList.add("card");
+      card.innerHTML = `
+        <a href="https://${username}.github.io/Color%20Palette%20-%20Generator.html" target="_blank">
+          Color Palette Generator →
+        </a>
+      `;
+      projectsDiv.appendChild(card);
+      return; // jatka seuraavaan repo:on
+    }
+
     const card = document.createElement("div"); // kortti
     card.classList.add("card");
 
-    let extraLink = ""; // lisälinkki
-    if (repo.name.toLowerCase() === `${username.toLowerCase()}.github.io`) { // tarkistus
-      extraLink = `<br><a href="https://${username}.github.io/Color%20Palette%20-%20Generator.html" target="_blank">
-        Color Palette Generator →</a>`;
-    }
-
-    const ghPagesUrl = `https://${username}.github.io/${repo.name.replace(/ /g, "-")}/`; // live-linkki
-
     card.innerHTML = `
       <h3>${repo.name.replace(/-/g, " ")}</h3>
-      ${extraLink}
     `;
 
     projectsDiv.appendChild(card); // lisää
