@@ -1,6 +1,4 @@
 # KPN-code.github.io
-
-My personal GitHub Pages site.  
 This is place for my projects and experiments.
 
 ---
