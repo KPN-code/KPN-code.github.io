@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>Advanced Color Palette Generator by Vibe</title>
   <style>
+    /* tyyli */
     body {
       font-family: 'Helvetica Neue', sans-serif;
       background-color: #f4f4f4;
@@ -17,12 +18,12 @@
       align-items: center;
     }
 
-    h1 {
+    h1 { /* otsikko */
       font-size: 2.5rem;
       margin-bottom: 1rem;
     }
 
-    input[type="text"] {
+    input[type="text"] { /* syötekenttä */
       padding: 0.5rem;
       font-size: 1rem;
       width: 280px;
@@ -30,7 +31,7 @@
       border-radius: 5px;
     }
 
-    button {
+    button { /* nappi */
       padding: 0.5rem 1rem;
       margin-left: 1rem;
       font-size: 1rem;
@@ -42,7 +43,7 @@
       user-select: none;
     }
 
-    .palette {
+    .palette { /* värilaatikot */
       display: flex;
       justify-content: center;
       margin-top: 2rem;
@@ -50,7 +51,7 @@
       flex-wrap: wrap;
     }
 
-    .color-box {
+    .color-box { /* laatikko */
       width: 100px;
       height: 100px;
       position: relative;
@@ -59,7 +60,7 @@
       flex-shrink: 0;
     }
 
-    .hex {
+    .hex { /* väriarvo */
       position: absolute;
       bottom: 5px;
       left: 5px;
@@ -71,14 +72,14 @@
       font-family: monospace;
     }
 
-    .label {
+    .label { /* teksti */
       margin-top: 1rem;
       font-size: 1.1rem;
       font-weight: bold;
       min-height: 1.5em;
     }
 
-    .supported-words {
+    .supported-words { /* sanalista */
       margin-top: 2rem;
       font-size: 0.9rem;
       color: #555;
@@ -88,31 +89,31 @@
       text-align: center;
     }
 
-    .input-group {
+    .input-group { /* syöterivi */
       margin-top: 1rem;
     }
-
   </style>
 </head>
 <body>
 
-  <h1> Color Palette Generator</h1>
+  <h1> Color Palette Generator</h1> <!-- otsikko -->
   <p>Type a vibe or mood word! Then you will get a matching color palette.</p>
 
-  <div class="input-group">
+  <div class="input-group"> <!-- syötteet -->
     <input type="text" id="vibeInput" placeholder="Enter a vibe word..." autocomplete="off" />
     <button onclick="generatePalette()">Generate</button>
   </div>
 
-  <div class="palette" id="paletteContainer"></div>
-  <div class="label" id="paletteLabel"></div>
+  <div class="palette" id="paletteContainer"></div> <!-- värit -->
+  <div class="label" id="paletteLabel"></div> <!-- teksti -->
 
-  <div class="supported-words">
+  <div class="supported-words"> <!-- tunnistetut sanat -->
     <strong>Recognized words:</strong><br />
     cozy, warm, snug, comfort, homely, soft, inviting, relaxed, calm, peaceful, serene, tranquil, gentle, quiet, nature, forest, earth, organic, green, fresh, wild, wood, bold, vibrant, energetic, powerful, dynamic, intense, strong, bright, luxury, rich, elegant, glamour, opulent, premium, classy, sophisticated, vintage, retro, classic, antique, oldschool, nostalgic, timeless, minimal, simple, clean, modern, neutral, dreamy, ethereal, airy, whimsical, magical, fantasy, pastel, light, delicate, sweet, cute, cyberpunk, neon, futuristic, tech, digital, electric, sunset, warmth, dusk, glow, evening, horizon, orange, fresh, calm, energetic, warm, cool, bright, soft, urban, elegant, retro
   </div>
 
   <script>
+    // palettidata
     const paletteData = {
       cozy: ["#FDEDE5", "#F5C6AA", "#D9A68F", "#8C4B32"],
       nature: ["#D6EFC7", "#A4CBB8", "#5C946E", "#264D36"],
@@ -136,7 +137,7 @@
       retro: ["#FF6B6B", "#FFE66D", "#4472CA", "#1A1A1D"]
     };
 
-    // Mapping multiple vibe words to one palette key:
+    // sanamapping
     const wordToPaletteKey = {
       cozy: "cozy",
       warm: "cozy",
@@ -221,17 +222,18 @@
       retro: "retro"
     };
 
+    // generointi
     function generatePalette() {
-      const input = document.getElementById("vibeInput").value.toLowerCase().trim();
-      const paletteKey = wordToPaletteKey[input];
-      const colors = paletteData[paletteKey];
+      const input = document.getElementById("vibeInput").value.toLowerCase().trim(); // syöte
+      const paletteKey = wordToPaletteKey[input]; // avain
+      const colors = paletteData[paletteKey]; // värit
 
-      const container = document.getElementById("paletteContainer");
-      const label = document.getElementById("paletteLabel");
+      const container = document.getElementById("paletteContainer"); // laatikko
+      const label = document.getElementById("paletteLabel"); // teksti
       container.innerHTML = "";
       label.innerText = "";
 
-      if (colors) {
+      if (colors) { // jos löytyy
         colors.forEach(hex => {
           const box = document.createElement("div");
           box.className = "color-box";
@@ -245,9 +247,9 @@
           container.appendChild(box);
         });
 
-        label.innerText = `Vibe: "${input}" — Palette: ${paletteKey}`;
+        label.innerText = `Vibe: "${input}" — Palette: ${paletteKey}`; // otsikko
       } else {
-        label.innerText = "Sorry. Try word from list below!";
+        label.innerText = "Sorry. Try word from list below!"; // virhe
       }
     }
   </script>
