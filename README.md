@@ -16,6 +16,5 @@ This is place for my projects and experiments.
 - GitHub Pages (hosting)
 
 ---
-
 ### Work in Progress
 This is just the beginning...
