@@ -127,16 +127,27 @@ async function loadProjects() {
 
     // Jos kyseessä on Color-Palette---Generator → linkki GitHub Pages -osoitteeseen ja repoon
     if (repo.name.toLowerCase() === "color-palette---generator") {
-      card.innerHTML = `
-        <a href="https://${username}.github.io/Color-Palette---Generator/" target="_blank">
-          Color Palette Generator →
-        </a>
-        <br>
-        <a href="${repo.html_url}" target="_blank">
-          Repository
-        </a>
-      `;
-    } else {
+  card.innerHTML = `
+    <a href="https://${username}.github.io/Color-Palette---Generator/" target="_blank">
+      Color Palette Generator →
+    </a>
+    <br>
+    <a href="${repo.html_url}" target="_blank">
+      Repository
+    </a>
+  `;
+} else if (repo.name.toLowerCase() === "password-generator") {
+  card.innerHTML = `
+    <a href="https://${username}.github.io/Password-Generator/" target="_blank">
+      Password Generator →
+    </a>
+    <br>
+    <a href="${repo.html_url}" target="_blank">
+      Repository
+    </a>
+  `;
+}
+ else {
       // Muut projektit vain nimellä + repo-linkki
       card.innerHTML = `
         <h3>${repo.name.replace(/-/g, " ")}</h3>
