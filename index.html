@@ -117,38 +117,38 @@ async function loadProjects() {
   projectsDiv.innerHTML = ""; 
 
   repos.forEach(repo => { 
-    // Ohitetaan github.io-repo
-    if (repo.name.toLowerCase() === `${username.toLowerCase()}.github.io`) {
+    // Ohitetaan github.io-repo ja flask-password-api
+    if (
+      repo.name.toLowerCase() === `${username.toLowerCase()}.github.io` || 
+      repo.name.toLowerCase() === "flask-password-api"
+    ) {
       return; 
     }
 
     const card = document.createElement("div"); 
     card.classList.add("card");
 
-    // Jos kyseessä on Color-Palette---Generator → linkki GitHub Pages -osoitteeseen ja repoon
     if (repo.name.toLowerCase() === "color-palette---generator") {
-  card.innerHTML = `
-    <a href="https://${username}.github.io/Color-Palette---Generator/" target="_blank">
-      Color Palette Generator →
-    </a>
-    <br>
-    <a href="${repo.html_url}" target="_blank">
-      Repository
-    </a>
-  `;
-} else if (repo.name.toLowerCase() === "password-generator") {
-  card.innerHTML = `
-    <a href="https://${username}.github.io/Password-Generator/" target="_blank">
-      Password Generator →
-    </a>
-    <br>
-    <a href="${repo.html_url}" target="_blank">
-      Repository
-    </a>
-  `;
-}
- else {
-      // Muut projektit vain nimellä + repo-linkki
+      card.innerHTML = `
+        <a href="https://${username}.github.io/Color-Palette---Generator/" target="_blank">
+          Color Palette Generator →
+        </a>
+        <br>
+        <a href="${repo.html_url}" target="_blank">
+          Repository
+        </a>
+      `;
+    } else if (repo.name.toLowerCase() === "password-generator") {
+      card.innerHTML = `
+        <a href="https://${username}.github.io/Password-Generator/" target="_blank">
+          Password Generator →
+        </a>
+        <br>
+        <a href="${repo.html_url}" target="_blank">
+          Repository
+        </a>
+      `;
+    } else {
       card.innerHTML = `
         <h3>${repo.name.replace(/-/g, " ")}</h3>
         <a href="${repo.html_url}" target="_blank">Repository</a>
@@ -161,7 +161,5 @@ async function loadProjects() {
 
 loadProjects(); 
 </script>
-
-
 </body>
 </html>
