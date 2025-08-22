@@ -56,6 +56,15 @@
     .card a:hover {
       color: #38bdf8;
     }
+    .password-output {
+      margin-top: 0.5rem;
+      font-family: monospace;
+      font-size: 0.9rem;
+      background: #0f172a;
+      padding: 0.5rem;
+      border-radius: 6px;
+      word-break: break-all;
+    }
     footer {
       background: #1e293b;
       color: #94a3b8;
@@ -121,9 +130,7 @@ async function loadProjects() {
     if (
       repo.name.toLowerCase() === `${username.toLowerCase()}.github.io` || 
       repo.name.toLowerCase() === "flask-password-api"
-    ) {
-      return; 
-    }
+    ) return; 
 
     const card = document.createElement("div"); 
     card.classList.add("card");
@@ -139,16 +146,33 @@ async function loadProjects() {
         </a>
       `;
     } else if (repo.name.toLowerCase() === "password-generator") {
-      // Nyt linkitetään Render API:iin
+      // Render API -kortti, joka hakee salasanan suoraan
       card.innerHTML = `
-        <a href="https://flask-password-api.onrender.com" target="_blank">
-          Password Generator →
+        <a href="#" id="generate-password-btn">
+          Generate Password →
         </a>
+        <div class="password-output" id="password-output"></div>
         <br>
         <a href="${repo.html_url}" target="_blank">
           Repository
         </a>
       `;
+
+      const btn = card.querySelector("#generate-password-btn");
+      const output = card.querySelector("#password-output");
+
+      btn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        output.textContent = "Generating...";
+        try {
+          const res = await fetch("https://flask-password-api.onrender.com/generate?length=16&symbols=true");
+          const data = await res.json();
+          output.textContent = data.password;
+        } catch(err) {
+          output.textContent = "Error generating password";
+          console.error(err);
+        }
+      });
     } else {
       card.innerHTML = `
         <h3>${repo.name.replace(/-/g, " ")}</h3>
