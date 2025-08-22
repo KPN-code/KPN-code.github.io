@@ -139,8 +139,9 @@ async function loadProjects() {
         </a>
       `;
     } else if (repo.name.toLowerCase() === "password-generator") {
+      // Nyt linkitetään Render API:iin
       card.innerHTML = `
-        <a href="https://${username}.github.io/Password-Generator/" target="_blank">
+        <a href="https://flask-password-api.onrender.com" target="_blank">
           Password Generator →
         </a>
         <br>
