@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta charset="UTF-8"> <!-- merkistö -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- mobiili -->
-  <title>Portfolio - Markus Koponen</title> <!-- otsikko -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Markus Koponen</title>
   <style>
-    body { /* runko */
+    body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
@@ -13,42 +13,50 @@
       color: #e2e8f0;
       line-height: 1.6;
     }
-    header { /* yläosa */
+    header {
       background: linear-gradient(135deg, #1e293b, #0f172a);
       color: white;
       text-align: center;
       padding: 3rem 1rem;
       animation: fadeInDown 1s ease-out;
     }
-    nav a { /* linkit */
+    nav a {
       margin: 0 1rem;
       text-decoration: none;
       color: #ffffff;
       font-weight: bold;
       transition: color 0.3s ease;
     }
-    nav a:hover { /* linkki-hover */
+    nav a:hover {
       color: #ffffff;
     }
-    section { /* osio */
+    section {
       max-width: 900px;
       margin: auto;
       padding: 3rem 1rem;
       animation: fadeIn 1.5s ease;
     }
-    .projects { /* projektit */
+    .projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
     }
-    .card { /* kortti */
+    .card {
       background: #1e293b;
       padding: 1.5rem;
       border-radius: 12px;
       box-shadow: 0 6px 12px rgba(0,0,0,0.3);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    footer { /* alaosa */
+    .card a {
+      text-decoration: none;
+      color: #e2e8f0;
+      font-weight: bold;
+    }
+    .card a:hover {
+      color: #38bdf8;
+    }
+    footer {
       background: #1e293b;
       color: #94a3b8;
       text-align: center;
@@ -56,24 +64,24 @@
       margin-top: 3rem;
       font-size: 0.9rem;
     }
-    @keyframes fadeIn { /* animaatio */
+    @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <header> <!-- yläosa -->
-    <h1>Hello, my name is Markus </h1> <!-- nimi -->
-    <p>This is my GitHub page and portfolio</p> <!-- kuvaus -->
-    <nav> <!-- navigaatio -->
+  <header>
+    <h1>Hello, my name is Markus </h1>
+    <p>This is my GitHub page and portfolio</p>
+    <nav>
       <a href="#about">About me</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact information</a>
     </nav>
   </header>
 
-  <section id="about"> <!-- minusta -->
+  <section id="about">
     <h2>About me</h2>
     <p>
       I am a Computer Science student at the University of Turku, passionate about learning and exploring new technologies. 
@@ -82,20 +90,20 @@
     </p>
   </section>
 
-  <section id="projects"> <!-- projektit -->
+  <section id="projects">
     <h2>Projects</h2>
     <div class="projects">
-      <p>Loading projects...</p> <!-- lataus -->
+      <p>Loading projects...</p>
     </div>
   </section>
 
-  <section id="contact"> <!-- yhteystiedot -->
+  <section id="contact">
     <h2>Contact</h2>
     <p>📧 markkpn008@gmail.com </p>
     <p>🔗 <a href="https://github.com/KPN-code" target="_blank">GitHub-profile</a></p>
   </section>
 
-  <footer> <!-- alaosa -->
+  <footer>
     <p>© 2025 Markus Koponen</p>
   </footer>
 
@@ -117,10 +125,10 @@ async function loadProjects() {
     const card = document.createElement("div"); 
     card.classList.add("card");
 
-    // Jos kyseessä on Color-Palette---Generator → ohjataan oikeaan osoitteeseen
+    // Jos kyseessä on Color-Palette---Generator → linkki GitHub Pages -osoitteeseen
     if (repo.name.toLowerCase() === "color-palette---generator") {
       card.innerHTML = `
-        <a href="https://github.com/${username}/Color-Palette---Generator" target="_blank">
+        <a href="https://${username}.github.io/Color-Palette---Generator/" target="_blank">
           Color Palette Generator →
         </a>
       `;
