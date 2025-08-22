@@ -118,8 +118,16 @@ async function loadProjects() {
 
   repos.forEach(repo => { 
     // Ohitetaan github.io-repo
-    if (repo.name.toLowerCase() === `${username.toLowerCase()}.github.io`) {
-      return; 
+    if (repo.name.toLowerCase() === "color-palette---generator") {
+  card.innerHTML = `
+    <a href="https://${username}.github.io/Color-Palette---Generator/" target="_blank">
+      Color Palette Generator →
+    </a>
+    <br>
+    <a href="${repo.html_url}" target="_blank">
+      Repository
+    </a> `;
+} 
     }
 
     const card = document.createElement("div"); 
