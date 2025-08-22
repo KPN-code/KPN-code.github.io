@@ -110,12 +110,12 @@ async function loadProjects() { // funktio
 
   repos.forEach(repo => { // silmukka
     
-    // jos kyseessä on github.io-repo → ei näytetä nimeä vaan vain linkki
+    // jos kyseessä on github.io-repo → linkki ohjataan toiseen repoon
     if (repo.name.toLowerCase() === `${username.toLowerCase()}.github.io`) {
       const card = document.createElement("div");
       card.classList.add("card");
       card.innerHTML = `
-        <a href="https://${username}.github.io/Color%20Palette%20-%20Generator.html" target="_blank">
+        <a href="https://github.com/${username}/color-palette-generator" target="_blank">
           Color Palette Generator →
         </a>
       `;
