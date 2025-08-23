@@ -5,125 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio - Markus Koponen</title>
   <style>
-    body { /* tyyli */
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #0f172a;
-      color: #e2e8f0;
-      line-height: 1.6;
-    }
-    header { /* header */
-      background: linear-gradient(135deg, #1e293b, #0f172a);
-      color: white;
-      text-align: center;
-      padding: 3rem 1rem;
-      animation: fadeInDown 1s ease-out;
-    }
-    nav a { /* nav */
-      margin: 0 1rem;
-      text-decoration: none;
-      color: #ffffff;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-    nav a:hover { /* hover */
-      color: #38bdf8;
-    }
-    section { /* section */
-      max-width: 900px;
-      margin: auto;
-      padding: 3rem 1rem;
-      animation: fadeIn 1.5s ease;
-    }
-    .projects { /* projects */
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-    .card { /* card */
-      background: #1e293b;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card:hover { /* hover */
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-    }
-    .card a { /* linkki */
-      text-decoration: none;
-      color: #e2e8f0;
-      font-weight: bold;
-    }
-    .card a:hover { /* hover */
-      color: #38bdf8;
-    }
-    .repo-description { /* desc */
-      font-size: 0.9rem;
-      color: #94a3b8;
-      margin: 0.5rem 0 1rem;
-    }
-    .password-output { /* password */
-      margin-top: 0.5rem;
-      font-family: monospace;
-      font-size: 0.9rem;
-      background: #0f172a;
-      padding: 0.5rem;
-      border-radius: 6px;
-      word-break: break-all;
-    }
-    .quote-section { /* quote */
-      background: #1e293b;
-      padding: 1.5rem;
-      border-radius: 12px;
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    .quote-text { /* quote-text */
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-    }
-    .quote-btn { /* button */
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 6px;
-      background: #38bdf8;
-      color: #0f172a;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .quote-btn:hover { /* hover */
-      background: #0ea5e9;
-    }
-    footer { /* footer */
-      background: #1e293b;
-      color: #94a3b8;
-      text-align: center;
-      padding: 1.5rem;
-      margin-top: 3rem;
-      font-size: 0.9rem;
-    }
-    @keyframes fadeIn { /* anim */
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    body { font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; background:#0f172a; color:#e2e8f0; line-height:1.6; }
+    header { background:linear-gradient(135deg,#1e293b,#0f172a); color:white; text-align:center; padding:3rem 1rem; animation:fadeInDown 1s ease-out; }
+    nav a { margin:0 1rem; text-decoration:none; color:#ffffff; font-weight:bold; transition:color 0.3s ease; }
+    nav a:hover { color:#38bdf8; }
+    section { max-width:900px; margin:auto; padding:3rem 1rem; animation:fadeIn 1.5s ease; }
+    .projects { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; }
+    .card { background:#1e293b; padding:1.5rem; border-radius:12px; box-shadow:0 6px 12px rgba(0,0,0,0.3); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card:hover { transform:translateY(-5px); box-shadow:0 10px 20px rgba(0,0,0,0.4); }
+    .card a { text-decoration:none; color:#e2e8f0; font-weight:bold; }
+    .card a:hover { color:#38bdf8; }
+    .repo-description { font-size:0.9rem; color:#94a3b8; margin:0.5rem 0 1rem; }
+    footer { background:#1e293b; color:#94a3b8; text-align:center; padding:1.5rem; margin-top:3rem; font-size:0.9rem; }
+    @keyframes fadeIn { from { opacity:0; transform:translateY(20px);} to { opacity:1; transform:translateY(0);} }
   </style>
 </head>
 <body>
-  <header> <!-- header -->
+  <header>
     <h1>Hello, my name is Markus</h1>
     <p>This is my GitHub page and portfolio</p>
-    <nav> <!-- nav -->
+    <nav>
       <a href="#about">About me</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact information</a>
     </nav>
   </header>
 
-  <section id="about"> <!-- about -->
+  <section id="about">
     <h2>About me</h2>
     <p>
       I am a Computer Science student at the University of Turku, passionate about learning and exploring new technologies. 
@@ -132,49 +40,39 @@
     </p>
   </section>
 
-  <section id="projects"> <!-- projects -->
+  <section id="projects">
     <h2>Projects</h2>
     <div class="projects">
       <p>Loading projects...</p>
     </div>
   </section>
 
-  <section id="contact"> <!-- contact -->
+  <section id="contact">
     <h2>Contact</h2>
     <p>📧 markkpn008@gmail.com </p>
     <p>🔗 <a href="https://github.com/KPN-code" target="_blank">GitHub-profile</a></p>
   </section>
 
-  <footer> <!-- footer -->
+  <footer>
     <p>© 2025 Markus Koponen</p>
   </footer>
 
 <script>
-const renderQuoteUrl = "https://quote-generator-1-flc1.onrender.com"; // URL
+async function loadProjects() {
+  const username = "KPN-code";
+  const response = await fetch(`https://api.github.com/users/${username}/repos?sort=created&direction=desc`);
+  const repos = await response.json();
 
-async function loadProjects() { // load
-  const username = "KPN-code"; // username
-  const response = await fetch(`https://api.github.com/users/${username}/repos?sort=created&direction=desc`); // fetch
-  const repos = await response.json(); // parse
+  const projectsDiv = document.querySelector(".projects");
+  projectsDiv.innerHTML = "";
 
-  const projectsDiv = document.querySelector(".projects"); // div
-  projectsDiv.innerHTML = ""; // clear
+  repos.forEach(repo => {
+    if (repo.name.toLowerCase() === `${username.toLowerCase()}.github.io`) return;
 
-  repos.forEach(repo => { // loop
-    if (repo.name.toLowerCase() === `${username.toLowerCase()}.github.io` || repo.name.toLowerCase() === "flask-password-api") return; // skip
+    const card = document.createElement("div");
+    card.classList.add("card");
 
-    const card = document.createElement("div"); // card
-    card.classList.add("card"); // class
-
-    if (repo.name.toLowerCase() === "quote-generator") { // render link
-      card.innerHTML = `
-        <h3>${repo.name.replace(/-/g, " ")}</h3>
-        <p class="repo-description">${repo.description || "Minimal yet functional program designed for demonstration."}</p>
-        <a href="${renderQuoteUrl}" target="_blank">Live Demo →</a>
-        <br>
-        <a href="${repo.html_url}" target="_blank">Repository</a>
-      `;
-    } else if (repo.has_pages) { // github pages
+    if (repo.has_pages) {
       card.innerHTML = `
         <h3>${repo.name.replace(/-/g, " ")}</h3>
         <p class="repo-description">${repo.description || "Minimal yet functional program designed for demonstration."}</p>
@@ -182,32 +80,7 @@ async function loadProjects() { // load
         <br>
         <a href="${repo.html_url}" target="_blank">Repository</a>
       `;
-    } else if (repo.name.toLowerCase() === "password-generator") { // password
-      card.innerHTML = `
-        <h3>${repo.name.replace(/-/g, " ")}</h3>
-        <p class="repo-description">${repo.description || "Password generator with API"}</p>
-        <a href="#" id="generate-password-btn">Generate Password →</a>
-        <div class="password-output" id="password-output"></div>
-        <br>
-        <a href="${repo.html_url}" target="_blank">Repository</a>
-      `;
-
-      const btn = card.querySelector("#generate-password-btn"); // button
-      const output = card.querySelector("#password-output"); // output
-
-      btn.addEventListener("click", async (e) => { // click
-        e.preventDefault();
-        output.textContent = "Generating...";
-        try {
-          const res = await fetch("https://flask-password-api.onrender.com/generate?length=16&symbols=true"); // fetch
-          const data = await res.json(); // parse
-          output.textContent = data.password; // show
-        } catch(err) {
-          output.textContent = "Error generating password"; // error
-          console.error(err); // log
-        }
-      });
-    } else { // default
+    } else {
       card.innerHTML = `
         <h3>${repo.name.replace(/-/g, " ")}</h3>
         <p class="repo-description">${repo.description || "Minimal yet functional program designed for demonstration."}</p>
@@ -215,29 +88,11 @@ async function loadProjects() { // load
       `;
     }
 
-    projectsDiv.appendChild(card); // append
+    projectsDiv.appendChild(card);
   });
 }
 
-async function loadQuote() { // quote
-  const quoteText = document.getElementById("quote-text"); // text
-  quoteText.textContent = "Loading quote..."; // loading
-
-  try {
-    const res = await fetch(renderQuoteUrl); // fetch
-    if (!res.ok) throw new Error("Network response was not ok"); // check
-    const data = await res.text(); // parse
-    quoteText.textContent = data; // show
-  } catch(err) {
-    quoteText.textContent = "Could not load quote"; // error
-    console.error(err); // log
-  }
-}
-
-document.getElementById("quote-btn").addEventListener("click", loadQuote); // event
-
-loadProjects(); // init
-loadQuote(); // init
+loadProjects(); // Lataa projektit
 </script>
 </body>
 </html>
