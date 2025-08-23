@@ -72,7 +72,16 @@ async function loadProjects() {
     const card = document.createElement("div");
     card.classList.add("card");
 
-    if (repo.has_pages) {
+    // Jos repository on quote-generator, käytetään Render live-demoa
+    if (repo.name.toLowerCase() === "quote-generator") {
+      card.innerHTML = `
+        <h3>${repo.name.replace(/-/g, " ")}</h3>
+        <p class="repo-description">${repo.description || "Minimal yet functional program designed for demonstration."}</p>
+        <a href="https://quote-generator-1-flc1.onrender.com" target="_blank">Live Demo →</a>
+        <br>
+        <a href="${repo.html_url}" target="_blank">Repository</a>
+      `;
+    } else if (repo.has_pages) {
       card.innerHTML = `
         <h3>${repo.name.replace(/-/g, " ")}</h3>
         <p class="repo-description">${repo.description || "Minimal yet functional program designed for demonstration."}</p>
