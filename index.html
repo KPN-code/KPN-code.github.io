@@ -28,7 +28,7 @@
       transition: color 0.3s ease;
     }
     nav a:hover {
-      color: #ffffff;
+      color: #38bdf8;
     }
     section {
       max-width: 900px;
@@ -48,6 +48,10 @@
       box-shadow: 0 6px 12px rgba(0,0,0,0.3);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    }
     .card a {
       text-decoration: none;
       color: #e2e8f0;
@@ -55,6 +59,11 @@
     }
     .card a:hover {
       color: #38bdf8;
+    }
+    .repo-description {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      margin: 0.5rem 0 1rem;
     }
     .password-output {
       margin-top: 0.5rem;
@@ -81,7 +90,7 @@
 </head>
 <body>
   <header>
-    <h1>Hello, my name is Markus </h1>
+    <h1>Hello, my name is Markus</h1>
     <p>This is my GitHub page and portfolio</p>
     <nav>
       <a href="#about">About me</a>
@@ -135,27 +144,29 @@ async function loadProjects() {
     const card = document.createElement("div"); 
     card.classList.add("card");
 
-    if (repo.name.toLowerCase() === "color-palette---generator") {
+    // Jos repossa on GitHub Pages käytössä → linkki sivulle
+    if (repo.has_pages) {
       card.innerHTML = `
-        <a href="https://${username}.github.io/Color-Palette---Generator/" target="_blank">
-          Color Palette Generator →
+        <h3>${repo.name.replace(/-/g, " ")}</h3>
+        <p class="repo-description">${repo.description || "No description provided"}</p>
+        <a href="https://${username}.github.io/${repo.name}/" target="_blank">
+          Live Demo →
         </a>
         <br>
-        <a href="${repo.html_url}" target="_blank">
-          Repository
-        </a>
+        <a href="${repo.html_url}" target="_blank">Repository</a>
       `;
-    } else if (repo.name.toLowerCase() === "password-generator") {
-      // Render API -kortti, joka hakee salasanan suoraan
+    } 
+    // Erikoistapaus: password-generator
+    else if (repo.name.toLowerCase() === "password-generator") {
       card.innerHTML = `
+        <h3>${repo.name.replace(/-/g, " ")}</h3>
+        <p class="repo-description">${repo.description || "Password generator with API"}</p>
         <a href="#" id="generate-password-btn">
           Generate Password →
         </a>
         <div class="password-output" id="password-output"></div>
         <br>
-        <a href="${repo.html_url}" target="_blank">
-          Repository
-        </a>
+        <a href="${repo.html_url}" target="_blank">Repository</a>
       `;
 
       const btn = card.querySelector("#generate-password-btn");
@@ -173,9 +184,12 @@ async function loadProjects() {
           console.error(err);
         }
       });
-    } else {
+    } 
+    // Muut repos: pelkkä linkki GitHubiin
+    else {
       card.innerHTML = `
         <h3>${repo.name.replace(/-/g, " ")}</h3>
+        <p class="repo-description">${repo.description || "No description provided"}</p>
         <a href="${repo.html_url}" target="_blank">Repository</a>
       `;
     }
