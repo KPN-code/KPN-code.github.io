@@ -189,7 +189,7 @@ async function loadProjects() {
     else {
       card.innerHTML = `
         <h3>${repo.name.replace(/-/g, " ")}</h3>
-        <p class="repo-description">${repo.description || "p>
+        <p class="repo-description">${repo.description || "Minimal yet functional program designed for demonstration."}</p>
         <a href="${repo.html_url}" target="_blank">Repository</a>
       `;
     }
