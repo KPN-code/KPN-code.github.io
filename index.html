@@ -148,7 +148,7 @@ async function loadProjects() {
     if (repo.has_pages) {
       card.innerHTML = `
         <h3>${repo.name.replace(/-/g, " ")}</h3>
-        <p class="repo-description">${repo.description || "No description provided"}</p>
+        <p class="repo-description">${repo.description || ""}</p>
         <a href="https://${username}.github.io/${repo.name}/" target="_blank">
           Live Demo →
         </a>
@@ -189,7 +189,7 @@ async function loadProjects() {
     else {
       card.innerHTML = `
         <h3>${repo.name.replace(/-/g, " ")}</h3>
-        <p class="repo-description">${repo.description || "No description provided"}</p>
+        <p class="repo-description">${repo.description || "p>
         <a href="${repo.html_url}" target="_blank">Repository</a>
       `;
     }
