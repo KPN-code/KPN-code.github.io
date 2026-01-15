@@ -6,23 +6,70 @@
   <title>Portfolio - Markus Koponen</title>
   <style>
     body { font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; background:#0f172a; color:#e2e8f0; line-height:1.6; }
+    
+    /* Header */
     header { background:linear-gradient(135deg,#1e293b,#0f172a); color:white; text-align:center; padding:3rem 1rem; animation:fadeInDown 1s ease-out; }
+    
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .header-container h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    .header-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
     nav a { margin:0 1rem; text-decoration:none; color:#ffffff; font-weight:bold; transition:color 0.3s ease; }
     nav a:hover { color:#38bdf8; }
+
     section { max-width:900px; margin:auto; padding:3rem 1rem; animation:fadeIn 1.5s ease; }
+
+    .about-container {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
     .projects { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; }
     .card { background:#1e293b; padding:1.5rem; border-radius:12px; box-shadow:0 6px 12px rgba(0,0,0,0.3); transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .card:hover { transform:translateY(-5px); box-shadow:0 10px 20px rgba(0,0,0,0.4); }
     .card a { text-decoration:none; color:#e2e8f0; font-weight:bold; }
     .card a:hover { color:#38bdf8; }
     .repo-description { font-size:0.9rem; color:#94a3b8; margin:0.5rem 0 1rem; }
+
     footer { background:#1e293b; color:#94a3b8; text-align:center; padding:1.5rem; margin-top:3rem; font-size:0.9rem; }
+
     @keyframes fadeIn { from { opacity:0; transform:translateY(20px);} to { opacity:1; transform:translateY(0);} }
   </style>
 </head>
 <body>
   <header>
-    <h1>Hello, my name is Markus</h1>
+    <div class="header-container">
+      <h1>Hello, my name is Markus</h1>
+      <img src="images/1000020639.jpg" alt="Markus Koponen" class="header-pic" />
+    </div>
     <p>This is my GitHub page and portfolio</p>
     <nav>
       <a href="#about">About me</a>
@@ -32,15 +79,15 @@
   </header>
 
   <section id="about">
-  <h2>About me</h2>
-  <div class="about-container">
-    <img src="images/1000020639.jpg" alt="Markus Koponen" class="profile-pic" />
-    <p>
-      I am a Computer Science student at the University of Turku, passionate about learning and exploring new technologies. 
-      I enjoy building projects that challenge my skills and allow me to grow as a developer.
-    </p>
-  </div>
-</section>
+    <h2>About me</h2>
+    <div class="about-container">
+      <img src="images/1000020639.jpg" alt="Markus Koponen" class="profile-pic" />
+      <p>
+        I am a Computer Science student at the University of Turku, passionate about learning and exploring new technologies. 
+        I enjoy building projects that challenge my skills and allow me to grow as a developer.
+      </p>
+    </div>
+  </section>
 
   <section id="projects">
     <h2>Projects</h2>
@@ -74,7 +121,6 @@ async function loadProjects() {
     const card = document.createElement("div");
     card.classList.add("card");
 
-    // Jos repository on quote-generator, käytetään Render live-demoa
     if (repo.name.toLowerCase() === "quote-generator") {
       card.innerHTML = `
         <h3>${repo.name.replace(/-/g, " ")}</h3>
@@ -103,7 +149,7 @@ async function loadProjects() {
   });
 }
 
-loadProjects(); // Lataa projektit
+loadProjects();
 </script>
 </body>
 </html>
