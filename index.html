@@ -5,119 +5,85 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio - Markus Koponen</title>
   <style>
-    body { font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; background:#0f172a; color:#e2e8f0; line-height:1.6; }
+    body { font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; background:#0f172a; color:#e2e8f0; line-height:1.6; } /* perus tyyli */
     
-    /* Header */
-    header { background:linear-gradient(135deg,#1e293b,#0f172a); color:white; text-align:center; padding:3rem 1rem; animation:fadeInDown 1s ease-out; }
+    header { background:linear-gradient(135deg,#1e293b,#0f172a); color:white; text-align:center; padding:3rem 1rem; animation:fadeInDown 1s ease-out; } /* header tyyli */
     
-    .header-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-    }
+    .header-container { display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1rem; } /* container asettelu */
+    .header-container h1 { margin: 0; font-size: 2.5rem; } /* otsikko tyyli */
+    .header-pic { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; } /* profiili kuva */
 
-    .header-container h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
+    nav a { margin:0 1rem; text-decoration:none; color:#ffffff; font-weight:bold; transition:color 0.3s ease; } /* nav linkit */
+    nav a:hover { color:#38bdf8; } /* hover väri */
 
-    .header-pic {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
+    section { max-width:900px; margin:auto; padding:3rem 1rem; animation:fadeIn 1.5s ease; } /* section tyyli */
+    .about-container { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; margin-top: 1rem; } /* about container */
+    .projects { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; } /* projekti grid */
+    .card { background:#1e293b; padding:1.5rem; border-radius:12px; box-shadow:0 6px 12px rgba(0,0,0,0.3); transition: transform 0.3s ease, box-shadow 0.3s ease; } /* kortti tyyli */
+    .card:hover { transform:translateY(-5px); box-shadow:0 10px 20px rgba(0,0,0,0.4); } /* kortti hover */
+    .card a { text-decoration:none; color:#e2e8f0; font-weight:bold; } /* linkki tyyli */
+    .card a:hover { color:#38bdf8; } /* link hover */
+    .repo-description { font-size:0.9rem; color:#94a3b8; margin:0.5rem 0 1rem; } /* repo teksti */
 
-    nav a { margin:0 1rem; text-decoration:none; color:#ffffff; font-weight:bold; transition:color 0.3s ease; }
-    nav a:hover { color:#38bdf8; }
+    footer { background:#1e293b; color:#94a3b8; text-align:center; padding:1.5rem; margin-top:3rem; font-size:0.9rem; } /* footer tyyli */
 
-    section { max-width:900px; margin:auto; padding:3rem 1rem; animation:fadeIn 1.5s ease; }
-
-    .about-container {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      margin-top: 1rem;
-    }
-
-    .profile-pic {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
-
-    .projects { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; }
-    .card { background:#1e293b; padding:1.5rem; border-radius:12px; box-shadow:0 6px 12px rgba(0,0,0,0.3); transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .card:hover { transform:translateY(-5px); box-shadow:0 10px 20px rgba(0,0,0,0.4); }
-    .card a { text-decoration:none; color:#e2e8f0; font-weight:bold; }
-    .card a:hover { color:#38bdf8; }
-    .repo-description { font-size:0.9rem; color:#94a3b8; margin:0.5rem 0 1rem; }
-
-    footer { background:#1e293b; color:#94a3b8; text-align:center; padding:1.5rem; margin-top:3rem; font-size:0.9rem; }
-
-    @keyframes fadeIn { from { opacity:0; transform:translateY(20px);} to { opacity:1; transform:translateY(0);} }
+    @keyframes fadeIn { from { opacity:0; transform:translateY(20px);} to { opacity:1; transform:translateY(0);} } /* animaatio */
   </style>
 </head>
 <body>
   <header>
     <div class="header-container">
-      <h1>Hello, my name is Markus</h1>
-      <img src="images/1000020639.jpg" alt="Markus Koponen" class="header-pic" />
+      <h1>Hello, my name is Markus</h1> <!-- otsikko teksti -->
+      <img src="images/1000020639.jpg" alt="Markus Koponen" class="header-pic" /> <!-- profiili kuva -->
     </div>
-    <p>This is my GitHub page and portfolio</p>
+    <p>This is my GitHub page and portfolio</p> <!-- esittely teksti -->
     <nav>
-      <a href="#about">About me</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact information</a>
+      <a href="#about">About me</a> <!-- nav linkki -->
+      <a href="#projects">Projects</a> <!-- nav linkki -->
+      <a href="#contact">Contact information</a> <!-- nav linkki -->
     </nav>
   </header>
 
   <section id="about">
-    <h2>About me</h2>
+    <h2>About me</h2> <!-- about otsikko -->
     <div class="about-container">
       <p>
         I am a Computer Science student at the University of Turku, passionate about learning and exploring new technologies. 
         I enjoy building projects that challenge my skills and allow me to grow as a developer.
-      </p>
+      </p> <!-- about teksti -->
     </div>
   </section>
 
   <section id="projects">
-    <h2>Projects</h2>
+    <h2>Projects</h2> <!-- projekti otsikko -->
     <div class="projects">
-      <p>Loading projects...</p>
+      <p>Loading projects...</p> <!-- lataus teksti -->
     </div>
   </section>
 
   <section id="contact">
-    <h2>Contact</h2>
-    <p>📧 markkpn008@gmail.com </p>
-    <p>💼 <a href="https://www.linkedin.com/in/markus-koponen-697a733a4" target="_blank">LinkedIn</a></p>
-    <p>🔗 <a href="https://github.com/KPN-code" target="_blank">GitHub-profile</a></p>
+    <h2>Contact</h2> <!-- contact otsikko -->
+    <p>📧 markkpn008@gmail.com</p> <!-- sähköposti -->
+    <p>💼 <a href="https://www.linkedin.com/in/markus-koponen-697a733a4" target="_blank">LinkedIn</a></p> <!-- linkedin linkki -->
+    <p>🔗 <a href="https://github.com/KPN-code" target="_blank">GitHub-profile</a></p> <!-- github linkki -->
   </section>
 
   <footer>
-    <p>© 2025 Markus Koponen</p>
+    <p>© 2025 Markus Koponen</p> <!-- footer teksti -->
   </footer>
 
 <script>
 async function loadProjects() {
-  const username = "KPN-code";
-  const response = await fetch(`https://api.github.com/users/${username}/repos?sort=created&direction=desc`);
-  const repos = await response.json();
+  const username = "KPN-code"; // käyttäjä nimi
+  const response = await fetch(`https://api.github.com/users/${username}/repos?sort=created&direction=desc`); // hae repos
+  const repos = await response.json(); // tallenna repos
 
-  const projectsDiv = document.querySelector(".projects");
-  projectsDiv.innerHTML = "";
+  const projectsDiv = document.querySelector(".projects"); // projekti div
+  projectsDiv.innerHTML = ""; // tyhjennä div
 
-  // Weather App -kortti ensin
-  const weatherCard = document.createElement("div");
-  weatherCard.classList.add("card");
+  // Weather App kortti
+  const weatherCard = document.createElement("div"); // luo div
+  weatherCard.classList.add("card"); // lisää class
   weatherCard.innerHTML = `
     <h3>Weather App</h3>
     <p class="repo-description">
@@ -127,11 +93,11 @@ async function loadProjects() {
     <br>
     <a href="https://github.com/KPN-code/weather_app" target="_blank">View Repository →</a>
   `;
-  projectsDiv.appendChild(weatherCard);
+  projectsDiv.appendChild(weatherCard); // lisää div
 
   // Bachelor’s Thesis
-  const thesisCard = document.createElement("div");
-  thesisCard.classList.add("card");
+  const thesisCard = document.createElement("div"); // luo div
+  thesisCard.classList.add("card"); // lisää class
   thesisCard.innerHTML = `
     <h3>Bachelor’s Thesis</h3>
     <p class="repo-description">
@@ -139,17 +105,17 @@ async function loadProjects() {
     </p>
     <a href="https://www.utupub.fi/handle/10024/194866" target="_blank">View Thesis →</a>
   `;
-  projectsDiv.appendChild(thesisCard);
+  projectsDiv.appendChild(thesisCard); // lisää div
 
-  // Muut GitHub reposiot
+  // Muut reposiot
   repos.forEach(repo => {
-    if (repo.name.toLowerCase() === `${username.toLowerCase()}.github.io` ||
-        repo.name.toLowerCase() === "weather_app") return;
+    const name = repo.name.toLowerCase(); // piena kirjain
+    if (name === `${username.toLowerCase()}.github.io` || name === "weather_app") return; // ohita repo
 
-    const card = document.createElement("div");
-    card.classList.add("card");
+    const card = document.createElement("div"); // luo div
+    card.classList.add("card"); // lisää class
 
-    if (repo.name.toLowerCase() === "quote-generator") {
+    if (name === "quote-generator") {
       card.innerHTML = `
         <h3>${repo.name.replace(/-/g, " ")}</h3>
         <p class="repo-description">${repo.description || "Minimal yet functional program designed for demonstration."}</p>
@@ -173,11 +139,11 @@ async function loadProjects() {
       `;
     }
 
-    projectsDiv.appendChild(card);
+    projectsDiv.appendChild(card); // lisää div
   });
 }
 
-loadProjects();
+loadProjects(); // suorita funktio
 </script>
 </body>
 </html>
