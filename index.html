@@ -110,7 +110,11 @@ async function loadProjects() {
   // Muut reposiot
   repos.forEach(repo => {
     const name = repo.name.toLowerCase(); // piena kirjain
-    if (name === `${username.toLowerCase()}.github.io` || name === "weather_app") return; // ohita repo
+    if (
+      name === `${username.toLowerCase()}.github.io` || 
+      name === "weather_app" ||
+      name === "flask-password-api" // <-- ohitetaan tämä repo
+    ) return;
 
     const card = document.createElement("div"); // luo div
     card.classList.add("card"); // lisää class
