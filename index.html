@@ -114,22 +114,37 @@ async function loadProjects() {
 
   const projectsDiv = document.querySelector(".projects");
   projectsDiv.innerHTML = "";
-// Kandi
-const thesisCard = document.createElement("div");
-thesisCard.classList.add("card");
 
-thesisCard.innerHTML = `
-  <h3>Bachelor’s Thesis</h3>
-  <p class="repo-description">
-    My bachelor’s thesis in Computer Science (written in Finnish).
-  </p>
-  <a href="https://www.utupub.fi/handle/10024/194866" target="_blank">View Thesis →</a>
-`;
+  // Weather App -kortti ensin
+  const weatherCard = document.createElement("div");
+  weatherCard.classList.add("card");
+  weatherCard.innerHTML = `
+    <h3>Weather App</h3>
+    <p class="repo-description">
+      React weather app with live search and suggestions.
+    </p>
+    <a href="https://github.com/KPN-code/weather_app" target="_blank">View Repository →</a>
+    <br>
+    <a href="https://kpn-code.github.io/weather_app/" target="_blank">Live Demo →</a>
+  `;
+  projectsDiv.appendChild(weatherCard);
 
-projectsDiv.appendChild(thesisCard);
+  // Bachelor’s Thesis
+  const thesisCard = document.createElement("div");
+  thesisCard.classList.add("card");
+  thesisCard.innerHTML = `
+    <h3>Bachelor’s Thesis</h3>
+    <p class="repo-description">
+      My bachelor’s thesis in Computer Science (written in Finnish).
+    </p>
+    <a href="https://www.utupub.fi/handle/10024/194866" target="_blank">View Thesis →</a>
+  `;
+  projectsDiv.appendChild(thesisCard);
 
+  // Muut GitHub reposiot
   repos.forEach(repo => {
-    if (repo.name.toLowerCase() === `${username.toLowerCase()}.github.io`) return;
+    if (repo.name.toLowerCase() === `${username.toLowerCase()}.github.io` ||
+        repo.name.toLowerCase() === "weather_app") return;
 
     const card = document.createElement("div");
     card.classList.add("card");
