@@ -94,7 +94,22 @@ async function loadProjects() {
     <a href="https://github.com/KPN-code/weather_app" target="_blank">View Repository →</a>
   `;
   projectsDiv.appendChild(weatherCard); // lisää div
+  
+  // Crypto Monitor kortti
+  const cryptoCard = document.createElement("div"); // luo div
+  cryptoCard.classList.add("card"); // lisää class
+  cryptoCard.innerHTML = `
+    <h3>Crypto Monitor</h3>
+    <p class="repo-description">
+      React app to track top 10 cryptocurrencies with charts for 1 month history.
+    </p>
+    <a href="https://kpn-code.github.io/crypto-monitor/" target="_blank">Live Demo →</a>
+    <br>
+    <a href="https://github.com/KPN-code/crypto-monitor" target="_blank">View Repository →</a>
+  `;
+  projectsDiv.appendChild(cryptoCard); // lisää div
 
+  
   // Bachelor’s Thesis
   const thesisCard = document.createElement("div"); // luo div
   thesisCard.classList.add("card"); // lisää class
