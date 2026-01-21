@@ -1,225 +1,288 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio - Markus Koponen</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio – Markus Koponen</title>
+
   <style>
-    /* Perus tyyli */
+    :root {
+      --bg: #0b1120;
+      --bg-soft: rgba(255,255,255,0.06);
+      --card: rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.15);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56,189,248,0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      padding: 0;
-      background: #0f172a; /* tumma tausta */
-      color: #e2e8f0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827, var(--bg));
+      color: var(--text);
       line-height: 1.6;
     }
 
-    /* Header */
-    header {
-      background: linear-gradient(135deg,#1e293b,#0f172a);
-      color: white;
-      text-align: center;
-      padding: 3rem 1rem;
-      animation: fadeInDown 1s ease-out;
-    }
-    .header-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-    }
-    .header-container h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      color: #38bdf8; /* turkoosi aksentti otsikkoon */
-    }
-    .header-pic {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #38bdf8; /* kevyt kehys profiilikuvaan */
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    }
-
-    /* Navigation */
-    nav a {
-      margin: 0 1rem;
+    a {
+      color: var(--accent);
       text-decoration: none;
-      color: #ffffff;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-    nav a:hover {
-      color: #38bdf8; /* hover turkoosi */
+      transition: opacity 0.3s ease;
     }
 
-    /* Sectionit */
-    section {
+    a:hover {
+      opacity: 0.8;
+    }
+
+    /* HERO */
+    header {
+      padding: 5rem 1.5rem 4rem;
+      text-align: center;
+    }
+
+    .hero {
       max-width: 900px;
       margin: auto;
-      padding: 3rem 1rem;
-      animation: fadeIn 1.5s ease;
-    }
-    .about-container {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      margin-top: 1rem;
+      gap: 1.5rem;
+      animation: fadeUp 1s ease;
     }
 
-    /* Projektikortit */
+    .hero img {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 0 6px var(--accent-soft);
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 600px;
+    }
+
+    nav {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav a {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* SECTIONS */
+    section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 4rem 1.5rem;
+    }
+
+    section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent);
+    }
+
+    /* ABOUT */
+    .about {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+    }
+
+    /* PROJECTS */
     .projects {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.5rem;
     }
+
     .card {
-      background: #1f2937; /* hieman vaaleampi tumma kortti */
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.8rem;
+      backdrop-filter: blur(12px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-      background: #272f44; /* hoverissä hieman kirkkaampi */
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
     }
+
     .card h3 {
-      color: #38bdf8; /* otsikot turkoosina */
       margin-top: 0;
+      margin-bottom: 0.5rem;
+      color: white;
     }
-    .card a {
-      text-decoration: none;
-      color: #e2e8f0;
-      font-weight: bold;
-    }
-    .card a:hover {
-      color: #60a5fa; /* hover linkit vaaleampi sininen */
-    }
+
     .repo-description {
-      font-size: 0.9rem;
-      color: #94a3b8;
-      margin: 0.5rem 0 1rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
     }
 
-    /* Footer */
+    .card a {
+      display: inline-block;
+      margin-right: 1rem;
+      font-weight: 600;
+    }
+
+    /* CONTACT */
+    .contact {
+      display: grid;
+      gap: 1rem;
+      font-size: 1rem;
+    }
+
+    /* FOOTER */
     footer {
-      background: #1e293b;
-      color: #94a3b8;
       text-align: center;
-      padding: 1.5rem;
-      margin-top: 3rem;
+      padding: 2rem 1rem;
       font-size: 0.9rem;
+      color: var(--muted);
     }
 
-    /* Animaatiot */
-    @keyframes fadeIn { 
-      from { opacity:0; transform:translateY(20px);} 
-      to { opacity:1; transform:translateY(0);} 
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    @keyframes fadeInDown { 
-      from { opacity:0; transform:translateY(-20px);} 
-      to { opacity:1; transform:translateY(0);} 
-    }
-
-    /* Linkkien aksentti hover */
-    a { transition: color 0.3s ease; }
-    a:hover { color: #38bdf8; }
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="header-container">
-      <h1>Hello, my name is Markus</h1>
-      <img src="images/1000020639.jpg" alt="Markus Koponen" class="header-pic" />
-    </div>
-    <p>This is my GitHub page and portfolio</p>
+
+<header>
+  <div class="hero">
+    <img src="images/1000020639.jpg" alt="Markus Koponen"/>
+    <h1>Hello, I’m Markus</h1>
+    <p>
+      Computer Science student at the University of Turku, interested in software development
+      and modern web technologies.
+    </p>
     <nav>
-      <a href="#about">About me</a>
+      <a href="#about">About</a>
       <a href="#projects">Projects</a>
-      <a href="#contact">Contact information</a>
+      <a href="#contact">Contact</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <section id="about">
-    <h2>About me</h2>
-    <div class="about-container">
-      <p>
-        I am a Computer Science student at the University of Turku, passionate about learning and exploring new technologies. 
-        I enjoy building projects that challenge my skills and allow me to grow as a developer.
-      </p>
-    </div>
-  </section>
+<section id="about">
+  <h2>About me</h2>
+  <div class="about">
+    <p>
+      I am a Computer Science student at the University of Turku.
+      I enjoy learning new technologies and building clean, functional
+      and visually polished projects.
+    </p>
+  </div>
+</section>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects">
-      <p>Loading projects...</p>
-    </div>
-  </section>
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects"></div>
+</section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>📧 markkpn008@gmail.com</p>
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="contact">
+    <p>📧 <a href="mailto:markkpn008@gmail.com">markkpn008@gmail.com</a></p>
     <p>💼 <a href="https://www.linkedin.com/in/markus-koponen-697a733a4" target="_blank">LinkedIn</a></p>
-    <p>🔗 <a href="https://github.com/KPN-code" target="_blank">GitHub-profile</a></p>
-  </section>
+    <p>🔗 <a href="https://github.com/KPN-code" target="_blank">GitHub</a></p>
+  </div>
+</section>
 
-  <footer>
-    <p>© 2025 Markus Koponen</p>
-  </footer>
+<footer>
+  © 2025 Markus Koponen
+</footer>
 
-  <script>
-    async function loadProjects() {
-      const username = "KPN-code";
-      const response = await fetch(`https://api.github.com/users/${username}/repos?sort=created&direction=desc`);
-      const repos = await response.json();
-
-      const projectsDiv = document.querySelector(".projects");
-      projectsDiv.innerHTML = "";
-
-      // Lisää omat projektikortit (Weather App, Crypto Monitor, Thesis)
-      const projectData = [
-        {
-          title: "Weather App",
-          description: "Minimal yet functional program designed for demonstration.",
-          demo: "https://kpn-code.github.io/weather_app/",
-          repo: "https://github.com/KPN-code/weather_app"
-        },
-        {
-          title: "Crypto Monitor",
-          description: "Minimal yet functional program designed for demonstration.",
-          demo: "https://kpn-code.github.io/crypto-monitor/",
-          repo: "https://github.com/KPN-code/crypto-monitor"
-        },
-        {
-          title: "Bachelor’s Thesis",
-          description: "My bachelor’s thesis in Computer Science (written in Finnish).",
-          demo: "https://www.utupub.fi/handle/10024/194866",
-          repo: null
-        }
-      ];
-
-      projectData.forEach(proj => {
-        const card = document.createElement("div");
-        card.classList.add("card");
-        card.innerHTML = `
-          <h3>${proj.title}</h3>
-          <p class="repo-description">${proj.description}</p>
-          ${proj.demo ? `<a href="${proj.demo}" target="_blank">Live Demo →</a><br>` : ''}
-          ${proj.repo ? `<a href="${proj.repo}" target="_blank">View Repository →</a>` : ''}
-        `;
-        projectsDiv.appendChild(card);
-      });
+<script>
+  const projects = [
+    {
+      title: "Weather App",
+      description: "Minimal and clean weather application for demonstration purposes.",
+      demo: "https://kpn-code.github.io/weather_app/",
+      repo: "https://github.com/KPN-code/weather_app"
+    },
+    {
+      title: "Crypto Monitor",
+      description: "Simple crypto price monitoring app with a clean UI.",
+      demo: "https://kpn-code.github.io/crypto-monitor/",
+      repo: "https://github.com/KPN-code/crypto-monitor"
+    },
+    {
+      title: "Quote Generator",
+      description: "Random quote generator with a simple and clean interface.",
+      demo: "https://kpn-code.github.io/Quote-Generator/",
+      repo: "https://github.com/KPN-code/Quote-Generator"
+    },
+    {
+      title: "Color Palette Generator",
+      description: "Tool for generating color palettes for design inspiration.",
+      demo: "https://kpn-code.github.io/Color-Palette---Generator/",
+      repo: "https://github.com/KPN-code/Color-Palette---Generator"
+    },
+    {
+      title: "Password Generator",
+      description: "Secure password generator with customizable options.",
+      demo: "https://kpn-code.github.io/Password-generator/",
+      repo: "https://github.com/KPN-code/Password-generator"
+    },
+    {
+      title: "Bachelor’s Thesis",
+      description: "My bachelor’s thesis in Computer Science (written in Finnish).",
+      demo: "https://www.utupub.fi/handle/10024/194866",
+      repo: null
     }
+  ];
 
-    loadProjects();
-  </script>
+  const container = document.querySelector(".projects");
+
+  projects.forEach(p => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <h3>${p.title}</h3>
+      <p class="repo-description">${p.description}</p>
+      ${p.demo ? `<a href="${p.demo}" target="_blank">Live demo →</a>` : ""}
+      ${p.repo ? `<a href="${p.repo}" target="_blank">Repository →</a>` : ""}
+    `;
+    container.appendChild(card);
+  });
+</script>
+
 </body>
 </html>
