@@ -18,6 +18,10 @@
 
 * { box-sizing: border-box; }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: system-ui, sans-serif;
@@ -117,10 +121,49 @@ h1, h2, h3 {
   to { opacity: 0; visibility: hidden; }
 }
 
+/* ================= NAVIGATION ================= */
+
+.nav {
+  position: fixed;
+  top: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1.5rem;
+  padding: 0.7rem 1.6rem;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  z-index: 10;
+}
+
+.nav a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  position: relative;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.25s ease;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
 /* ================= HERO ================= */
 
 header {
-  padding: 5rem 1.5rem 4rem;
+  padding: 6.5rem 1.5rem 4rem;
   text-align: center;
   position: relative;
   z-index: 2;
@@ -149,6 +192,7 @@ section {
   padding: 3.5rem 1.5rem;
   position: relative;
   z-index: 2;
+  scroll-margin-top: 120px;
 }
 
 /* ================= CARDS ================= */
@@ -158,10 +202,6 @@ section {
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 1.8rem;
-}
-
-.card + .card {
-  margin-top: 1.5rem;
 }
 
 /* ================= PROJECTS ================= */
@@ -186,6 +226,13 @@ section {
   background: var(--accent);
   color: white;
   font-size: 0.9rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.button:hover {
+  background: #3f5746;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(47,63,51,0.35);
 }
 
 /* ================= SKILLS ================= */
@@ -242,6 +289,14 @@ footer {
 </div>
 
 <header>
+  <nav class="nav">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#thesis">Thesis</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
   <div class="hero">
     <img src="images/1000020639.jpg" alt="Profile picture">
     <h1>Welcome</h1>
@@ -249,42 +304,25 @@ footer {
   </div>
 </header>
 
-<section>
+<section id="about">
   <div class="card">
     <h2>About Me</h2>
     <p>Motivated developer with a strong interest in front-end development and modern web technologies.</p>
   </div>
 </section>
 
-<section>
+<section id="projects">
   <h2>Projects</h2>
-
   <div class="projects">
-    <div class="card">
-      <h3>Weather App</h3>
-      <p>A weather application that displays real-time weather data using an external API.</p>
-    </div>
-
-    <div class="card">
-      <h3>Quote Generator</h3>
-      <p>A simple application that generates random inspirational quotes.</p>
-    </div>
-
-    <div class="card">
-      <h3>Password Generator</h3>
-      <p>A secure password generator allowing users to customize password length and characters.</p>
-    </div>
-
-    <div class="card">
-      <h3>Color Palette Generator</h3>
-      <p>A tool for generating and previewing color palettes for UI design.</p>
-    </div>
+    <div class="card"><h3>Weather App</h3><p>A weather application using external APIs.</p></div>
+    <div class="card"><h3>Quote Generator</h3><p>Generates random inspirational quotes.</p></div>
+    <div class="card"><h3>Password Generator</h3><p>Customizable secure password generator.</p></div>
+    <div class="card"><h3>Color Palette Generator</h3><p>Tool for generating UI color palettes.</p></div>
   </div>
 </section>
 
-<section class="skills-section">
+<section id="skills" class="skills-section">
   <h2>Technical Skills</h2>
-
   <div class="skills-grid">
     <div class="skill"><img src="icons/javascript.svg">JavaScript</div>
     <div class="skill"><img src="icons/html.svg">HTML</div>
@@ -297,7 +335,7 @@ footer {
   </div>
 </section>
 
-<section>
+<section id="thesis">
   <div class="card">
     <h2>Bachelor’s Thesis</h2>
     <p>You can read my bachelor’s thesis published by the University of Turku.</p>
@@ -307,7 +345,7 @@ footer {
   </div>
 </section>
 
-<section>
+<section id="contact">
   <div class="card">
     <h2>Contact</h2>
     <p>📧 markkpn008@gmail.com</p>
@@ -316,9 +354,7 @@ footer {
   </div>
 </section>
 
-<footer>
-  © 2025 Markus Koponen
-</footer>
+<footer>© 2025 Markus Koponen</footer>
 
 <script>
 const createDots = container => {
