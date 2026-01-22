@@ -228,10 +228,10 @@ section {
 /* ================= CARDS ================= */
 
 .card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 1.8rem;
+  width: 100%;          /* kortti vie koko containerin leveyden */
+  max-width: 1000px;    /* ei ylitä containerin maksimileveyttä */
+  margin: 1.5rem auto;  /* keskitetään sivulle */
+  box-sizing: border-box;
 }
 
 .card + .card {
