@@ -293,6 +293,15 @@ section {
 .skill img {
   width: 26px;
 }
+  .intro-card {
+  background: var(--card);        /* valkoinen tausta */
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.8rem;
+  display: inline-block;          /* jotta box leveys on vain sisällön mukaan */
+  text-align: center;
+  margin-top: 1rem;
+}
 
 /* ================= FOOTER ================= */
 
@@ -332,8 +341,10 @@ footer {
 <header id="about">
   <div class="hero">
     <img src="images/1000020639.jpg" alt="Profile picture">
-    <h1>Markus Koponen</h1>
-    <p>Computer Science student at the University of Turku.</p>
+    <div class="intro-card">  <!-- Uusi container -->
+      <h1>Markus Koponen</h1>
+      <p>Computer Science student at the University of Turku.</p>
+    </div>
   </div>
 </header>
 
