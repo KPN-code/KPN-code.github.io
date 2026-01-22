@@ -423,12 +423,12 @@ footer {
 
 <script>
 const createDots = container => {
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 50; i++) { // 50 palloa per puoli
     const dot = document.createElement("div");
     dot.className = "dot";
-    dot.style.left = Math.random() * 250 + "px";
-    dot.style.animationDuration = 6 + Math.random() * 6 + "s";
-    dot.style.animationDelay = Math.random() * 6 + "s";
+    dot.style.left = Math.random() * 600 + "px"; // leviää 600px leveydelle
+    dot.style.animationDuration = 6 + Math.random() * 6 + "s"; // satunnaiset nopeudet
+    dot.style.animationDelay = Math.random() * 6 + "s"; // satunnaiset viiveet
     container.appendChild(dot);
   }
 };
