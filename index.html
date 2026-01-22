@@ -84,10 +84,14 @@ h1, h2, h3 {
 }
 
 .logo {
-  text-align: center;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center;    
   color: #e6e2d8;
   font-family: Georgia, serif;
 }
+
 
 .initials {
   font-size: clamp(7rem, 20vw, 13rem);
@@ -97,11 +101,6 @@ h1, h2, h3 {
 }
 
 .name {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: clamp(2rem, 5vw, 3rem);
   opacity: 0;
   animation: nameFadeIn 1.5s ease forwards;
