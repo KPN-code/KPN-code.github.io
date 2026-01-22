@@ -422,19 +422,26 @@ footer {
 </footer>
 
 <script>
+<script>
+// Luo pallot koko sivulle
 const createDots = container => {
-  for (let i = 0; i < 50; i++) { // 50 palloa per puoli
+  for (let i = 0; i < 100; i++) { // 100 palloa koko sivulle
     const dot = document.createElement("div");
     dot.className = "dot";
-    dot.style.left = Math.random() * 600 + "px"; // leviää 600px leveydelle
+    dot.style.left = Math.random() * window.innerWidth + "px"; // koko sivun leveys
+    dot.style.top = Math.random() * window.innerHeight + "px"; // satunnainen korkeus
     dot.style.animationDuration = 6 + Math.random() * 6 + "s"; // satunnaiset nopeudet
     dot.style.animationDelay = Math.random() * 6 + "s"; // satunnaiset viiveet
     container.appendChild(dot);
   }
 };
 
-createDots(document.querySelector(".left-dots"));
-createDots(document.querySelector(".right-dots"));
+// Lisää container koko sivun leveydelle
+const dotContainer = document.createElement("div");
+dotContainer.className = "floating-dots";
+document.body.appendChild(dotContainer);
+
+createDots(dotContainer);
 
 // Hamburger toggle
 const hamburger = document.getElementById("hamburger");
