@@ -241,13 +241,15 @@ section {
 /* ================= PROJECTS ================= */
 
 
-
-.card h3 {
-  margin-bottom: 0.5rem;
-}
-  /* Projects-otsikko */
-.projects-header {
-  margin-bottom: 1rem; /* Varmistaa, että projektit alkavat otsikon alapuolelta */
+/* Koko projekti-alueen kortti */
+.projects-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;     /* tilaa otsikon ja projektien väliin */
+  padding: 2rem;    /* lisää sisäistä tilaa kortille */
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: var(--card);
 }
 
 /* Grid projektikorteille */
@@ -255,6 +257,14 @@ section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
+}
+
+/* Yksittäiset projektikortit */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 250px; /* kaikki kortit saman korkuisia */
 }
 
 /* Yksittäiset projektikortit */
@@ -375,44 +385,46 @@ footer {
 </section>
 
 <section id="projects">
-  <!-- Otsikkokortti -->
-  <div class="card projects-header">
+  <!-- Yksi kortti koko projekti-osuudelle -->
+  <div class="card projects-card">
+    <!-- Otsikko kortin sisällä -->
     <h2>Projects</h2>
-  </div>
 
-  <!-- Projektikortit gridissä -->
-  <div class="projects">
-    <div class="card project-card">
-      <h3>Weather App</h3>
-      <p>A weather application that displays real-time weather data using an external API.</p>
-      <a class="button" href="https://kpn-code.github.io/weather_app/" target="_blank">View Project</a>
-    </div>
+    <!-- Projektikortit gridissä -->
+    <div class="projects">
+      <div class="card project-card">
+        <h3>Weather App</h3>
+        <p>A weather application that displays real-time weather data using an external API.</p>
+        <a class="button" href="https://kpn-code.github.io/weather_app/" target="_blank">View Project</a>
+      </div>
 
-    <div class="card project-card">
-      <h3>Quote Generator</h3>
-      <p>A simple application that generates random inspirational quotes.</p>
-      <a class="button" href="https://kpn-code.github.io/Quote-Generator/" target="_blank">View Project</a>
-    </div>
+      <div class="card project-card">
+        <h3>Quote Generator</h3>
+        <p>A simple application that generates random inspirational quotes.</p>
+        <a class="button" href="https://kpn-code.github.io/Quote-Generator/" target="_blank">View Project</a>
+      </div>
 
-    <div class="card project-card">
-      <h3>Password Generator</h3>
-      <p>A secure password generator allowing users to customize password length and characters.</p>
-      <a class="button" href="https://kpn-code.github.io/Password-generator/" target="_blank">View Project</a>
-    </div>
+      <div class="card project-card">
+        <h3>Password Generator</h3>
+        <p>A secure password generator allowing users to customize password length and characters.</p>
+        <a class="button" href="https://kpn-code.github.io/Password-generator/" target="_blank">View Project</a>
+      </div>
 
-    <div class="card project-card">
-      <h3>Color Palette Generator</h3>
-      <p>A tool for generating and previewing color palettes for UI design.</p>
-      <a class="button" href="https://kpn-code.github.io/Color-Palette---Generator/" target="_blank">View Project</a>
-    </div>
+      <div class="card project-card">
+        <h3>Color Palette Generator</h3>
+        <p>A tool for generating and previewing color palettes for UI design.</p>
+        <a class="button" href="https://kpn-code.github.io/Color-Palette---Generator/" target="_blank">View Project</a>
+      </div>
 
-    <div class="card project-card">
-      <h3>Crypto Monitor</h3>
-      <p>A crypto monitoring application that tracks real-time cryptocurrency prices.</p>
-      <a class="button" href="https://kpn-code.github.io/crypto-monitor/" target="_blank">View Project</a>
+      <div class="card project-card">
+        <h3>Crypto Monitor</h3>
+        <p>A crypto monitoring application that tracks real-time cryptocurrency prices.</p>
+        <a class="button" href="https://kpn-code.github.io/crypto-monitor/" target="_blank">View Project</a>
+      </div>
     </div>
   </div>
 </section>
+
 
 
 
