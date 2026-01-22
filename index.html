@@ -32,6 +32,10 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
 h1, h2, h3 {
   margin-top: 0;
 }
@@ -124,6 +128,73 @@ header {
   text-align: center;
   position: relative;
   z-index: 2;
+}
+
+/* ================= NAVIGATION / HAMBURGER ================= */
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--card);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 999;
+}
+
+.nav .logo-text {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.nav-links li a {
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links li a:hover {
+  color: var(--accent-soft);
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100%;
+    width: 220px;
+    background: var(--card);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5rem 1.5rem;
+    gap: 2rem;
+    transition: right 0.3s ease;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .hamburger {
+    display: block;
+  }
 }
 
 .hero {
@@ -245,7 +316,19 @@ footer {
   </div>
 </div>
 
-<header>
+<!-- NAVIGATION -->
+<nav class="nav">
+  <div class="logo-text">MK Portfolio</div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">☰</div>
+</nav>
+
+<header id="about">
   <div class="hero">
     <img src="images/1000020639.jpg" alt="Profile picture">
     <h1>Markus Koponen</h1>
@@ -260,7 +343,7 @@ footer {
   </div>
 </section>
 
-<section>
+<section id="projects">
   <h2>Projects</h2>
 
   <div class="projects">
@@ -298,7 +381,7 @@ footer {
   </div>
 </section>
 
-<section class="skills-section">
+<section class="skills-section" id="skills">
   <h2>Technical Skills</h2>
 
   <div class="skills-grid">
@@ -315,7 +398,7 @@ footer {
 </section>
 
 <section>
-  <div class="card">
+  <div class="card" id="contact">
     <h2>Bachelor’s Thesis</h2>
     <p>You can read my bachelor’s thesis published by the University of Turku.</p>
     <a class="button" href="https://www.utupub.fi/handle/10024/194866" target="_blank">
@@ -351,6 +434,14 @@ const createDots = container => {
 
 createDots(document.querySelector(".left-dots"));
 createDots(document.querySelector(".right-dots"));
+
+// Hamburger toggle
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("nav-links");
+
+hamburger.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+});
 </script>
 
 </body>
