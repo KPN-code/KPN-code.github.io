@@ -227,53 +227,64 @@ section {
 
 /* ================= CARDS ================= */
 
+/* Kaikki kortit (About, Thesis, Contact) täysleveitä, keskitettyjä */
 .card {
-  width: 100%;          /* kortti vie koko containerin leveyden */
-  max-width: 1000px;    /* ei ylitä containerin maksimileveyttä */
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.8rem;
   margin: 1.5rem auto;  /* keskitetään sivulle */
+  max-width: 1000px;    /* ei ylitä containerin maksimileveyttä */
   box-sizing: border-box;
 }
 
+/* Jos kaksi korttia peräkkäin, väli */
 .card + .card {
   margin-top: 1.5rem;
 }
 
+/* ================= INTRO CARD ================= */
+
+.intro-card {
+  display: inline-block;  /* vain sisällön levyinen */
+  text-align: center;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.8rem;
+  margin-top: 1rem;
+}
+
 /* ================= PROJECTS ================= */
 
-
-/* Koko projekti-alueen kortti */
 .projects-card {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;     /* tilaa otsikon ja projektien väliin */
-  padding: 2rem;    /* lisää sisäistä tilaa kortille */
+  gap: 1.5rem;
+  padding: 2rem;
   border-radius: 18px;
   border: 1px solid var(--border);
   background: var(--card);
 }
 
-/* Grid projektikorteille */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
 }
 
-/* Yksittäiset projektikortit */
 .project-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 250px; /* kaikki kortit saman korkuisia */
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.5rem;
+  box-sizing: border-box;
 }
 
-/* Yksittäiset projektikortit */
-.project-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 250px; /* Kaikki kortit saman korkuisia */
-}
 
 /* ================= BUTTON ================= */
 
