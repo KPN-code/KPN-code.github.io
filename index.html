@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fi">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -8,12 +8,10 @@
 <style>
 :root {
   --bg: #f8fafc;
-  --bg-soft: #ffffff;
   --card: #ffffff;
   --border: #e5e7eb;
   --text: #0f172a;
   --muted: #64748b;
-
   --accent: #2f3f33;
   --accent-soft: rgba(47,63,51,0.15);
 }
@@ -34,6 +32,10 @@ a {
   text-decoration: none;
 }
 
+h1, h2, h3 {
+  margin-top: 0;
+}
+
 /* ================= FLOATING DOTS ================= */
 
 .floating-dots {
@@ -42,7 +44,7 @@ a {
   bottom: 0;
   width: 60px;
   pointer-events: none;
-  z-index: 1;
+  z-index: 0;
 }
 
 .left-dots { left: 0; }
@@ -127,19 +129,16 @@ header {
 .hero {
   max-width: 900px;
   margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.4rem;
 }
 
 .hero img {
-  width: 260px;
-  height: 260px;
+  width: 240px;
+  height: 240px;
   border-radius: 50%;
   border: 3px solid var(--accent);
   box-shadow: 0 0 0 8px var(--accent-soft);
   object-fit: cover;
+  margin-bottom: 1.5rem;
 }
 
 /* ================= SECTIONS ================= */
@@ -152,77 +151,77 @@ section {
   z-index: 2;
 }
 
-section h2 {
-  color: var(--accent);
-  margin-bottom: 1.4rem;
-}
-
-/* ABOUT */
-
-.about {
-  background: var(--bg-soft);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 1.8rem;
-}
-
-/* PROJECTS */
-
-.projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-  gap: 1.4rem;
-}
+/* ================= CARDS ================= */
 
 .card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 18px;
-  padding: 1.7rem;
+  padding: 1.8rem;
 }
 
-/* SKILLS */
+.card + .card {
+  margin-top: 1.5rem;
+}
+
+/* ================= PROJECTS ================= */
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.card h3 {
+  margin-bottom: 0.5rem;
+}
+
+/* ================= BUTTON ================= */
+
+.button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: white;
+  font-size: 0.9rem;
+}
+
+/* ================= SKILLS ================= */
 
 .skills-section {
-  background: #0b0f0d;
+  background: var(--card);
+  border: 1px solid var(--border);
   border-radius: 24px;
-  margin: 4rem auto;
-  padding: 3.5rem 2rem;
 }
 
 .skills-section h2 {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
-  gap: 2rem 1.6rem;
+  gap: 1.5rem;
 }
 
 .skill {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
-  color: #e6e2d8;
-  opacity: 0.85;
+  gap: 0.8rem;
 }
 
 .skill img {
   width: 26px;
 }
 
-/* CONTACT */
-
-.contact {
-  display: grid;
-  gap: 0.4rem;
-}
+/* ================= FOOTER ================= */
 
 footer {
   text-align: center;
-  padding: 1.8rem;
+  padding: 2rem;
   color: var(--muted);
 }
 </style>
@@ -244,50 +243,82 @@ footer {
 
 <header>
   <div class="hero">
-    <img src="images/1000020639.jpg">
+    <img src="images/1000020639.jpg" alt="Profile picture">
     <h1>Welcome</h1>
     <p>Computer Science student at the University of Turku.</p>
   </div>
 </header>
 
-<section id="about">
-<h2>About me</h2>
-<div class="about">
-Motivated developer with strong interest in front-end development.
-</div>
+<section>
+  <div class="card">
+    <h2>About Me</h2>
+    <p>Motivated developer with a strong interest in front-end development and modern web technologies.</p>
+  </div>
 </section>
 
-<section id="projects">
-<h2>Projects</h2>
-<div class="projects"></div>
+<section>
+  <h2>Projects</h2>
+
+  <div class="projects">
+    <div class="card">
+      <h3>Weather App</h3>
+      <p>A weather application that displays real-time weather data using an external API.</p>
+    </div>
+
+    <div class="card">
+      <h3>Quote Generator</h3>
+      <p>A simple application that generates random inspirational quotes.</p>
+    </div>
+
+    <div class="card">
+      <h3>Password Generator</h3>
+      <p>A secure password generator allowing users to customize password length and characters.</p>
+    </div>
+
+    <div class="card">
+      <h3>Color Palette Generator</h3>
+      <p>A tool for generating and previewing color palettes for UI design.</p>
+    </div>
+  </div>
 </section>
 
-<section id="skills" class="skills-section">
-<h2>Technical Skills</h2>
-<div class="skills-grid">
-  <div class="skill"><img src="icons/javascript.svg">JavaScript</div>
-  <div class="skill"><img src="icons/html.svg">HTML</div>
-  <div class="skill"><img src="icons/css.svg">CSS</div>
-  <div class="skill"><img src="icons/react.svg">React</div>
-  <div class="skill"><img src="icons/python.svg">Python</div>
-  <div class="skill"><img src="icons/java.svg">Java</div>
-  <div class="skill"><img src="icons/excel.svg">Excel</div>
-  <div class="skill"><img src="icons/github.svg">GitHub</div>
-  <div class="skill"><img src="icons/nodejs.svg">Node.js</div>
-  <div class="skill"><img src="icons/express.svg">Express.js</div>
-</div>
+<section class="skills-section">
+  <h2>Technical Skills</h2>
+
+  <div class="skills-grid">
+    <div class="skill"><img src="icons/javascript.svg">JavaScript</div>
+    <div class="skill"><img src="icons/html.svg">HTML</div>
+    <div class="skill"><img src="icons/css.svg">CSS</div>
+    <div class="skill"><img src="icons/react.svg">React</div>
+    <div class="skill"><img src="icons/python.svg">Python</div>
+    <div class="skill"><img src="icons/java.svg">Java</div>
+    <div class="skill"><img src="icons/github.svg">GitHub</div>
+    <div class="skill"><img src="icons/nodejs.svg">Node.js</div>
+  </div>
 </section>
 
-<section id="contact">
-<h2>Contact</h2>
-<div class="contact">
-📧 markkpn008@gmail.com  
-💼 LinkedIn  
-🔗 GitHub
-</div>
+<section>
+  <div class="card">
+    <h2>Bachelor’s Thesis</h2>
+    <p>You can read my bachelor’s thesis published by the University of Turku.</p>
+    <a class="button" href="https://www.utupub.fi/handle/10024/194866" target="_blank">
+      Read the Thesis
+    </a>
+  </div>
 </section>
 
-<footer>© 2025 Markus Koponen</footer>
+<section>
+  <div class="card">
+    <h2>Contact</h2>
+    <p>📧 markkpn008@gmail.com</p>
+    <p>💼 LinkedIn</p>
+    <p>🔗 GitHub</p>
+  </div>
+</section>
+
+<footer>
+  © 2025 Markus Koponen
+</footer>
 
 <script>
 const createDots = container => {
