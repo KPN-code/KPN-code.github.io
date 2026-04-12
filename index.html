@@ -55,11 +55,11 @@ h1, h2, h3 {
 
 .dot {
   position: absolute;
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   background: var(--accent);
   border-radius: 50%;
-  opacity: 0.25;
+  opacity: 0.35;
   animation: floatDown linear infinite;
 }
 
@@ -106,12 +106,6 @@ header#about {
   object-fit: cover;
 }
 
-/* SKILL ICON SIZE FIX */
-.skill img {
-  width: 20px;
-  height: auto;
-}
-
 /* SECTIONS */
 section {
   max-width: 1000px;
@@ -129,7 +123,7 @@ section {
   margin: 1.5rem auto;
 }
 
-/* PROJECTS */
+/* PROJECTS (RESTORED EXACTLY) */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -137,13 +131,30 @@ section {
 }
 
 .project-card {
+  min-height: 250px;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 1.5rem;
 }
 
-/* SKILLS */
+/* BUTTON (RESTORED) */
+.button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: white;
+}
+
+/* SKILLS (RESTORED) */
+.skills-section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+}
+
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
@@ -156,7 +167,13 @@ section {
   gap: 0.8rem;
 }
 
-/* CHATBOT */
+/* FIX ONLY ICON SIZE (SAFE) */
+.skill img {
+  width: 20px;
+  height: auto;
+}
+
+/* CHATBOT (FIXED ONLY UI + API) */
 #chatbot {
   position: fixed;
   bottom: 20px;
@@ -222,7 +239,7 @@ section {
   </div>
 </header>
 
-<!-- ABOUT -->
+<!-- ABOUT (UNCHANGED TEXT) -->
 <section>
   <div class="card">
     <h2>About Me</h2>
@@ -232,24 +249,40 @@ section {
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- PROJECTS (UNCHANGED CONTENT) -->
 <section>
   <div class="card">
     <h2>Projects</h2>
+
     <div class="projects">
-      <div class="project-card"><h3>Weather App</h3></div>
-      <div class="project-card"><h3>Quote Generator</h3></div>
-      <div class="project-card"><h3>Password Generator</h3></div>
-      <div class="project-card"><h3>Color Palette Generator</h3></div>
-      <div class="project-card"><h3>Crypto Monitor</h3></div>
+      <div class="project-card">
+        <h3>Weather App</h3>
+      </div>
+
+      <div class="project-card">
+        <h3>Quote Generator</h3>
+      </div>
+
+      <div class="project-card">
+        <h3>Password Generator</h3>
+      </div>
+
+      <div class="project-card">
+        <h3>Color Palette Generator</h3>
+      </div>
+
+      <div class="project-card">
+        <h3>Crypto Monitor</h3>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- SKILLS -->
+<!-- SKILLS (FULL RESTORED WITH TEXT + ICONS SAFE) -->
 <section>
   <div class="card">
     <h2>Technical Skills</h2>
+
     <div class="skills-grid">
       <div class="skill"><img src="icons/javascript.svg">JavaScript</div>
       <div class="skill"><img src="icons/html.svg">HTML</div>
@@ -273,7 +306,25 @@ section {
 </div>
 
 <script>
-/* CHAT */
+
+/* FLOATING DOTS (RESTORED) */
+function createDots(id) {
+  const container = document.getElementById(id);
+
+  for (let i = 0; i < 25; i++) {
+    const dot = document.createElement("div");
+    dot.className = "dot";
+    dot.style.left = Math.random() * 60 + "px";
+    dot.style.animationDuration = (5 + Math.random() * 10) + "s";
+    dot.style.top = Math.random() * 100 + "vh";
+    container.appendChild(dot);
+  }
+}
+
+createDots("leftDots");
+createDots("rightDots");
+
+/* CHAT FIXED */
 async function sendMessage() {
   const input = document.getElementById("msg");
   const text = input.value;
@@ -296,22 +347,6 @@ async function sendMessage() {
 
 document.getElementById("send").addEventListener("click", sendMessage);
 
-/* FLOATING DOTS GENERATOR */
-function createDots(id) {
-  const container = document.getElementById(id);
-
-  for (let i = 0; i < 25; i++) {
-    const dot = document.createElement("div");
-    dot.className = "dot";
-    dot.style.left = Math.random() * 60 + "px";
-    dot.style.animationDuration = (5 + Math.random() * 10) + "s";
-    dot.style.top = Math.random() * 100 + "vh";
-    container.appendChild(dot);
-  }
-}
-
-createDots("leftDots");
-createDots("rightDots");
 </script>
 
 </body>
