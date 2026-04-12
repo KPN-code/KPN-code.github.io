@@ -60,7 +60,7 @@ h1, h2, h3 { margin-top: 0; }
   to { transform: translateY(110vh); }
 }
 
-/* INTRO */
+/* INTRO (UNCHANGED) */
 #intro {
   position: fixed;
   inset: 0;
@@ -188,11 +188,16 @@ section {
   color: white;
 }
 
-/* SKILLS ICON FIX */
+/* SKILLS */
+.skill {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
 .skill img {
   width: 20px;
   height: 20px;
-  margin-right: 8px;
 }
 
 /* CHATBOT */
@@ -202,8 +207,8 @@ section {
   right: 20px;
   width: 300px;
   background: white;
-  border-radius: 16px;
   border: 1px solid #ddd;
+  border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   z-index: 9999;
   overflow: hidden;
@@ -269,13 +274,11 @@ section {
   </div>
 </header>
 
-<!-- ABOUT (TÄYSI TEKSTI TALLESSA) -->
+<!-- ABOUT -->
 <section>
   <div class="card">
     <h2>About Me</h2>
-    <p>
-      I am a motivated and fast-learning developer from Finland. I have a strong interest in front-end development. I am proficient in HTML, CSS, JavaScript, and Python, and also have experience with Java and C#. I am diligent, curious, and proactive, enjoying the challenge of solving problems and continuously improving code quality.
-    </p>
+    <p>I am a motivated and fast-learning developer from Finland. I have a strong interest in front-end development. I am proficient in HTML, CSS, JavaScript, and Python, and also have experience with Java and C#. I am diligent, curious, and proactive, enjoying the challenge of solving problems and continuously improving code quality.</p>
   </div>
 </section>
 
@@ -287,34 +290,34 @@ section {
 
       <div class="project-card">
         <h3>Weather App</h3>
-        <a class="button" href="https://kpn-code.github.io/weather_app/" target="_blank">View</a>
+        <a class="button" href="https://kpn-code.github.io/weather_app/" target="_blank">View Project</a>
       </div>
 
       <div class="project-card">
         <h3>Quote Generator</h3>
-        <a class="button" href="https://quote-generator-1-flc1.onrender.com" target="_blank">View</a>
+        <a class="button" href="https://quote-generator-1-flc1.onrender.com" target="_blank">View Project</a>
       </div>
 
       <div class="project-card">
         <h3>Password Generator</h3>
-        <a class="button" href="https://kpn-code.github.io/Password-generator/" target="_blank">View</a>
+        <a class="button" href="https://kpn-code.github.io/Password-generator/" target="_blank">View Project</a>
       </div>
 
       <div class="project-card">
-        <h3>Color Palette</h3>
-        <a class="button" href="https://kpn-code.github.io/Color-Palette---Generator/" target="_blank">View</a>
+        <h3>Color Palette Generator</h3>
+        <a class="button" href="https://kpn-code.github.io/Color-Palette---Generator/" target="_blank">View Project</a>
       </div>
 
       <div class="project-card">
         <h3>Crypto Monitor</h3>
-        <a class="button" href="https://kpn-code.github.io/crypto-monitor/" target="_blank">View</a>
+        <a class="button" href="https://kpn-code.github.io/crypto-monitor/" target="_blank">View Project</a>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- SKILLS (IKONIT OK) -->
+<!-- SKILLS (FIXED ICONS) -->
 <section>
   <div class="card">
     <h2>Technical Skills</h2>
@@ -331,6 +334,38 @@ section {
   </div>
 </section>
 
+<!-- CERTIFICATES -->
+<section>
+  <div class="card">
+    <h2>Certificates</h2>
+  </div>
+</section>
+
+<!-- THESIS -->
+<section>
+  <div class="card">
+    <h2>Bachelor’s Thesis</h2>
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<section>
+  <div class="card">
+    <h2>Contact</h2>
+
+    <p>📧 <a href="mailto:markkpn008@gmail.com">markkpn008@gmail.com</a></p>
+
+    <p>💼 <a href="https://www.linkedin.com/in/markus-koponen-697a733a4" target="_blank">
+      LinkedIn
+    </a></p>
+
+    <p>🔗 <a href="https://github.com/KPN-code" target="_blank">
+      GitHub
+    </a></p>
+  </div>
+</section>
+
 <!-- CHATBOT -->
 <div id="chatbot">
   <div id="msgs"></div>
@@ -341,26 +376,25 @@ section {
 </div>
 
 <script>
-/* DOTS GENERATION (FIXED) */
-function createDots() {
+/* DOTS */
+function createDots(){
   const left = document.querySelector(".left-dots");
   const right = document.querySelector(".right-dots");
 
-  for (let i = 0; i < 25; i++) {
-    let d1 = document.createElement("div");
-    let d2 = document.createElement("div");
+  for(let i=0;i<20;i++){
+    let d1=document.createElement("div");
+    let d2=document.createElement("div");
+    d1.className="dot";
+    d2.className="dot";
 
-    d1.className = "dot";
-    d2.className = "dot";
+    d1.style.left=Math.random()*60+"px";
+    d2.style.right=Math.random()*60+"px";
 
-    d1.style.left = Math.random() * 60 + "px";
-    d2.style.right = Math.random() * 60 + "px";
+    d1.style.top=Math.random()*100+"vh";
+    d2.style.top=Math.random()*100+"vh";
 
-    d1.style.top = Math.random() * 100 + "vh";
-    d2.style.top = Math.random() * 100 + "vh";
-
-    d1.style.animationDuration = (5 + Math.random() * 5) + "s";
-    d2.style.animationDuration = (5 + Math.random() * 5) + "s";
+    d1.style.animationDuration=(4+Math.random()*5)+"s";
+    d2.style.animationDuration=(4+Math.random()*5)+"s";
 
     left.appendChild(d1);
     right.appendChild(d2);
@@ -374,14 +408,11 @@ document.getElementById("send").addEventListener("click", async () => {
   const text = input.value;
   if (!text) return;
 
-  const res = await fetch(
-    "https://9i38yt108h.execute-api.eu-north-1.amazonaws.com/prod/chat",
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: text })
-    }
-  );
+  const res = await fetch("https://9i38yt108h.execute-api.eu-north-1.amazonaws.com/prod/chat", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({ message: text })
+  });
 
   const data = await res.json();
 
