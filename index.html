@@ -16,7 +16,6 @@
   --accent-soft: rgba(47,63,51,0.15);
 }
 
-/* RESET */
 * { box-sizing: border-box; }
 
 body {
@@ -28,59 +27,19 @@ body {
   overflow-x: hidden;
 }
 
-/* ================= INTRO (FIXED - BACK) ================= */
-#intro {
-  position: fixed;
-  inset: 0;
-  background: var(--accent);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 99999;
-  animation: fadeOut 0.8s ease forwards;
-  animation-delay: 2.8s;
-}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
 
-.logo {
-  text-align: center;
-  color: #e6e2d8;
-  font-family: Georgia, serif;
-}
+h1, h2, h3 { margin-top: 0; }
 
-.initials {
-  font-size: clamp(7rem, 20vw, 13rem);
-  letter-spacing: 0.14em;
-  animation: pop 1.2s ease;
-}
-
-.name {
-  font-size: clamp(2rem, 5vw, 3rem);
-  opacity: 0;
-  animation: fadeIn 1.5s ease forwards;
-  animation-delay: 1.2s;
-}
-
-@keyframes pop {
-  from { transform: scale(1.3); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-
-@keyframes fadeOut {
-  to { opacity: 0; visibility: hidden; }
-}
-
-/* ================= FLOATING DOTS FIX ================= */
+/* FLOATING DOTS */
 .floating-dots {
   position: fixed;
   top: 0;
   bottom: 0;
-  width: 80px;
+  width: 60px;
   pointer-events: none;
-  z-index: 1;
+  z-index: 0;
 }
 
 .left-dots { left: 0; }
@@ -88,17 +47,66 @@ body {
 
 .dot {
   position: absolute;
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   background: var(--accent);
   border-radius: 50%;
-  opacity: 0.25;
+  opacity: 0.35;
   animation: floatDown linear infinite;
 }
 
 @keyframes floatDown {
   from { transform: translateY(-10vh); }
   to { transform: translateY(110vh); }
+}
+
+/* INTRO */
+#intro {
+  position: fixed;
+  inset: 0;
+  background: var(--accent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: introFadeOut 0.8s ease forwards;
+  animation-delay: 3.1s;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #e6e2d8;
+  font-family: Georgia, serif;
+}
+
+.initials {
+  font-size: clamp(7rem, 20vw, 13rem);
+  letter-spacing: 0.14em;
+  opacity: 0;
+  animation: initialsIn 1.6s ease forwards;
+}
+
+.name {
+  font-size: clamp(2rem, 5vw, 3rem);
+  opacity: 0;
+  animation: nameFadeIn 1.5s ease forwards;
+  animation-delay: 1.7s;
+}
+
+@keyframes initialsIn {
+  from { opacity: 0; transform: scale(1.18); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes nameFadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes introFadeOut {
+  to { opacity: 0; visibility: hidden; }
 }
 
 /* NAV */
@@ -111,14 +119,14 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.6rem 1.5rem;
+  padding: 0.4rem 1.5rem;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  z-index: 1000;
+  z-index: 999;
 }
 
-/* HERO FIX */
-header#about {
-  padding-top: 90px;
+/* HERO */
+header {
+  padding-top: 80px;
 }
 
 .hero {
@@ -127,7 +135,6 @@ header#about {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
 }
 
 .hero img {
@@ -154,9 +161,10 @@ section {
   border-radius: 18px;
   padding: 1.8rem;
   margin: 1.5rem auto;
+  max-width: 1000px;
 }
 
-/* PROJECTS (UNCHANGED LOOK) */
+/* PROJECTS */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -164,30 +172,30 @@ section {
 }
 
 .project-card {
-  background: var(--card);
+  min-height: 250px;
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 1.5rem;
+  background: white;
 }
 
-/* SKILLS */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
-  gap: 1.5rem;
+.button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: white;
 }
 
-.skill {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-
+/* SKILLS ICON FIX */
 .skill img {
   width: 20px;
+  height: 20px;
+  margin-right: 8px;
 }
 
-/* CHAT */
+/* CHATBOT */
 #chatbot {
   position: fixed;
   bottom: 20px;
@@ -195,6 +203,7 @@ section {
   width: 300px;
   background: white;
   border-radius: 16px;
+  border: 1px solid #ddd;
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   z-index: 9999;
   overflow: hidden;
@@ -209,7 +218,7 @@ section {
 
 #chat-input {
   display: flex;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid #ddd;
 }
 
 #msg {
@@ -226,13 +235,16 @@ section {
   padding: 10px 14px;
   cursor: pointer;
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- INTRO (BACK) -->
+<!-- FLOATING DOTS -->
+<div class="floating-dots left-dots"></div>
+<div class="floating-dots right-dots"></div>
+
+<!-- INTRO -->
 <div id="intro">
   <div class="logo">
     <div class="initials">MK</div>
@@ -240,19 +252,16 @@ section {
   </div>
 </div>
 
-<!-- FLOATING DOTS -->
-<div class="floating-dots left-dots" id="leftDots"></div>
-<div class="floating-dots right-dots" id="rightDots"></div>
-
 <!-- NAV -->
 <nav class="nav">
-  <div>Portfolio</div>
+  <div class="logo-text">Portfolio</div>
 </nav>
 
 <!-- HERO -->
-<header id="about">
+<header>
   <div class="hero">
     <img src="images/1000020639.jpg">
+
     <div class="card">
       <h1>Markus Koponen</h1>
       <p>Computer Science student at the University of Turku.</p>
@@ -260,11 +269,13 @@ section {
   </div>
 </header>
 
-<!-- ABOUT -->
+<!-- ABOUT (TÄYSI TEKSTI TALLESSA) -->
 <section>
   <div class="card">
     <h2>About Me</h2>
-    <p>I am a motivated and fast-learning developer from Finland. I have a strong interest in front-end development. I am proficient in HTML, CSS, JavaScript, and Python, and also have experience with Java and C#. I am diligent, curious, and proactive, enjoying the challenge of solving problems and continuously improving code quality.</p>
+    <p>
+      I am a motivated and fast-learning developer from Finland. I have a strong interest in front-end development. I am proficient in HTML, CSS, JavaScript, and Python, and also have experience with Java and C#. I am diligent, curious, and proactive, enjoying the challenge of solving problems and continuously improving code quality.
+    </p>
   </div>
 </section>
 
@@ -273,33 +284,54 @@ section {
   <div class="card">
     <h2>Projects</h2>
     <div class="projects">
-      <div class="project-card"><h3>Weather App</h3></div>
-      <div class="project-card"><h3>Quote Generator</h3></div>
-      <div class="project-card"><h3>Password Generator</h3></div>
-      <div class="project-card"><h3>Color Palette Generator</h3></div>
-      <div class="project-card"><h3>Crypto Monitor</h3></div>
+
+      <div class="project-card">
+        <h3>Weather App</h3>
+        <a class="button" href="https://kpn-code.github.io/weather_app/" target="_blank">View</a>
+      </div>
+
+      <div class="project-card">
+        <h3>Quote Generator</h3>
+        <a class="button" href="https://quote-generator-1-flc1.onrender.com" target="_blank">View</a>
+      </div>
+
+      <div class="project-card">
+        <h3>Password Generator</h3>
+        <a class="button" href="https://kpn-code.github.io/Password-generator/" target="_blank">View</a>
+      </div>
+
+      <div class="project-card">
+        <h3>Color Palette</h3>
+        <a class="button" href="https://kpn-code.github.io/Color-Palette---Generator/" target="_blank">View</a>
+      </div>
+
+      <div class="project-card">
+        <h3>Crypto Monitor</h3>
+        <a class="button" href="https://kpn-code.github.io/crypto-monitor/" target="_blank">View</a>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- SKILLS -->
+<!-- SKILLS (IKONIT OK) -->
 <section>
   <div class="card">
     <h2>Technical Skills</h2>
-    <div class="skills-grid">
-      <div class="skill"><img src="icons/javascript.svg">JavaScript</div>
-      <div class="skill"><img src="icons/html.svg">HTML</div>
-      <div class="skill"><img src="icons/css.svg">CSS</div>
-      <div class="skill"><img src="icons/react.svg">React</div>
-      <div class="skill"><img src="icons/python.svg">Python</div>
-      <div class="skill"><img src="icons/java.svg">Java</div>
-      <div class="skill"><img src="icons/github.svg">GitHub</div>
-      <div class="skill"><img src="icons/nodejs.svg">Node.js</div>
-    </div>
+
+    <div class="skill"><img src="icons/javascript-original.svg">JavaScript</div>
+    <div class="skill"><img src="icons/html5-original.svg">HTML</div>
+    <div class="skill"><img src="icons/css3-original.svg">CSS</div>
+    <div class="skill"><img src="icons/react-original.svg">React</div>
+    <div class="skill"><img src="icons/python-original.svg">Python</div>
+    <div class="skill"><img src="icons/java-original.svg">Java</div>
+    <div class="skill"><img src="icons/github-original.svg">GitHub</div>
+    <div class="skill"><img src="icons/nodejs-original.svg">Node.js</div>
+
   </div>
 </section>
 
-<!-- CHAT -->
+<!-- CHATBOT -->
 <div id="chatbot">
   <div id="msgs"></div>
   <div id="chat-input">
@@ -309,51 +341,55 @@ section {
 </div>
 
 <script>
-
-/* DOTS FIX */
-function createDots(id) {
-  const container = document.getElementById(id);
+/* DOTS GENERATION (FIXED) */
+function createDots() {
+  const left = document.querySelector(".left-dots");
+  const right = document.querySelector(".right-dots");
 
   for (let i = 0; i < 25; i++) {
-    const d = document.createElement("div");
-    d.className = "dot";
-    d.style.left = Math.random() * 60 + "px";
-    d.style.top = Math.random() * 100 + "vh";
-    d.style.animationDuration = (4 + Math.random() * 8) + "s";
-    container.appendChild(d);
+    let d1 = document.createElement("div");
+    let d2 = document.createElement("div");
+
+    d1.className = "dot";
+    d2.className = "dot";
+
+    d1.style.left = Math.random() * 60 + "px";
+    d2.style.right = Math.random() * 60 + "px";
+
+    d1.style.top = Math.random() * 100 + "vh";
+    d2.style.top = Math.random() * 100 + "vh";
+
+    d1.style.animationDuration = (5 + Math.random() * 5) + "s";
+    d2.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+    left.appendChild(d1);
+    right.appendChild(d2);
   }
 }
-createDots("leftDots");
-createDots("rightDots");
+createDots();
 
-/* CHAT FIX (THIS WAS BROKEN BEFORE) */
-async function sendMessage() {
+/* CHAT FIX */
+document.getElementById("send").addEventListener("click", async () => {
   const input = document.getElementById("msg");
   const text = input.value;
   if (!text) return;
 
-  try {
-    const res = await fetch("https://9i38yt108h.execute-api.eu-north-1.amazonaws.com/prod/chat", {
+  const res = await fetch(
+    "https://9i38yt108h.execute-api.eu-north-1.amazonaws.com/prod/chat",
+    {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: text })
-    });
+    }
+  );
 
-    const data = await res.json();
+  const data = await res.json();
 
-    document.getElementById("msgs").innerHTML +=
-      "<div><b>You:</b> " + text + "</div>" +
-      "<div><b>Bot:</b> " + data.reply + "</div><hr>";
-
-  } catch (err) {
-    alert("Chat API ei vastaa. Tarkista AWS CORS + endpoint.");
-  }
+  document.getElementById("msgs").innerHTML +=
+    `<div><b>You:</b> ${text}</div><div><b>Bot:</b> ${data.reply}</div><hr>`;
 
   input.value = "";
-}
-
-document.getElementById("send").addEventListener("click", sendMessage);
-
+});
 </script>
 
 </body>
