@@ -201,7 +201,10 @@ h1, h2, h3 {
   object-fit: cover;
   margin-bottom: 1.5rem;
 }
-
+.skill img {
+  width: 20px;   /* pienempi arvo = pienempi ikoni */
+  height: auto;
+}
 /* SECTIONS */
 section {
   max-width: 1000px;
@@ -453,7 +456,7 @@ async function sendMessage() {
   const text = input.value;
   if (!text) return;
 
-  const res = await fetch("https://9i38yt108h.execute-api.eu-north-1.amazonaws.com/prod/chat", {
+  const res = await fetch("https://9i38yt108h.execute-api.eu-north-1.amazonaws.com/prod/chat", ...){
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({ message: text })
