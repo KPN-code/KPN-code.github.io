@@ -366,6 +366,22 @@ document.getElementById("send").addEventListener("click", async () => {
     `<div><b>You:</b> ${text}</div><div><b>Bot:</b> ${data.reply}</div><hr>`;
 });
 </script>
+<script>
+function createDots(containerId) {
+  const container = document.querySelector(containerId);
 
+  for (let i = 0; i < 25; i++) {
+    const dot = document.createElement("div");
+    dot.className = "dot";
+    dot.style.left = Math.random() * 60 + "px";
+    dot.style.animationDuration = (5 + Math.random() * 10) + "s";
+    dot.style.opacity = Math.random() * 0.4;
+    container.appendChild(dot);
+  }
+}
+
+createDots(".left-dots");
+createDots(".right-dots");
+</script>
 </body>
 </html>
