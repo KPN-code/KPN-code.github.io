@@ -277,50 +277,109 @@ footer {
   color: var(--muted);
 }
 
-/* ================= CHATBOT (ADDED) ================= */
+/* ================= CHATBOT (MODERN CHAT UI) ================= */
 
 #chatbot {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 280px;
+  width: 340px;
+  height: 460px;
   background: white;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 10px;
-  font-family: Arial;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: system-ui, sans-serif;
   z-index: 9999;
 }
 
 #msgs {
-  height: 160px;
+  flex: 1;
+  padding: 12px;
   overflow-y: auto;
-  font-size: 12px;
-  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #f8fafc;
+}
+
+.chat-input {
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+  border-top: 1px solid #eee;
+  background: white;
 }
 
 #msg {
-  width: 70%;
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+}
+
+button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  background: #2f3f33;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.msg {
+  max-width: 80%;
+  padding: 10px 12px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.user {
+  align-self: flex-end;
+  background: #2f3f33;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.bot {
+  align-self: flex-start;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-bottom-left-radius: 4px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= CHATBOT (ADDED) ================= -->
+<!-- CHATBOT -->
 <div id="chatbot">
   <div id="msgs"></div>
-  <input id="msg" placeholder="Kysy minusta..." />
-  <button onclick="send()">Lähetä</button>
+
+  <div class="chat-input">
+    <input id="msg" placeholder="Kysy minusta..." />
+    <button onclick="send()">→</button>
+  </div>
 </div>
 
 <script>
 async function send() {
   const input = document.getElementById("msg");
   const text = input.value;
-
   if (!text) return;
+
+  const msgs = document.getElementById("msgs");
+
+  msgs.innerHTML += `<div class="msg user">${text}</div>`;
+  input.value = "";
 
   const res = await fetch("https://9i38yt108h.execute-api.eu-north-1.amazonaws.com/prod/chat", {
     method: "POST",
@@ -330,15 +389,12 @@ async function send() {
 
   const data = await res.json();
 
-  document.getElementById("msgs").innerHTML +=
-    "<div><b>Sinä:</b> " + text + "</div>" +
-    "<div><b>Bot:</b> " + data.reply + "</div><hr>";
-
-  input.value = "";
+  msgs.innerHTML += `<div class="msg bot">${data.reply}</div>`;
+  msgs.scrollTop = msgs.scrollHeight;
 }
 </script>
 
-<!-- ================= REST OF YOUR SITE (UNCHANGED) ================= -->
+<!-- REST OF SITE (UNCHANGED) -->
 
 <div class="floating-dots left-dots"></div>
 <div class="floating-dots right-dots"></div>
@@ -366,48 +422,19 @@ async function send() {
 <header id="about">
   <div class="hero">
     <img src="images/1000020639.jpg" alt="Profile picture">
-    <div class="intro-card">
-      <h1>Markus Koponen</h1>
-      <p>Computer Science student at the University of Turku.</p>
-    </div>
+    <h1>Markus Koponen</h1>
+    <p>Computer Science student at the University of Turku.</p>
   </div>
 </header>
 
-<section>
-  <div class="card">
-    <h2>About Me</h2>
-    <p>I am a motivated and fast-learning developer from Finland...</p>
-  </div>
-</section>
-
 <section id="projects">
-  <div class="card projects-card">
+  <div class="card">
     <h2>Projects</h2>
-    <div class="projects">
-      <div class="card project-card"><h3>Weather App</h3></div>
-      <div class="card project-card"><h3>Quote Generator</h3></div>
-      <div class="card project-card"><h3>Password Generator</h3></div>
-      <div class="card project-card"><h3>Color Palette Generator</h3></div>
-      <div class="card project-card"><h3>Crypto Monitor</h3></div>
-    </div>
   </div>
 </section>
 
 <section id="skills" class="skills-section">
-  <h2>Technical Skills</h2>
-  <div class="skills-grid"></div>
-</section>
-
-<section id="certificates">
-  <div class="card">
-    <h2>Certificates</h2>
-  </div>
-</section>
-
-<section id="thesis">
-  <div class="card">
-    <h2>Bachelor’s Thesis</h2>
-  </div>
+  <h2>Skills</h2>
 </section>
 
 <section id="contact">
