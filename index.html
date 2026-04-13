@@ -384,7 +384,6 @@ section {
 
 
 <script>
-/* FLOATING DOTS */
 function createDots() {
   const left = document.querySelector(".left-dots");
   const right = document.querySelector(".right-dots");
@@ -412,20 +411,18 @@ function createDots() {
   }
 }
 
-/* TYPE EFFECT */
-function typeText(element, text, speed = 15) {
-  element.textContent = "";
+function typeText(el, text, speed = 15) {
+  el.textContent = "";
   let i = 0;
 
-  function type() {
+  function run() {
     if (i < text.length) {
-      element.textContent += text[i];
-      i++;
-      setTimeout(type, speed);
+      el.textContent += text[i++];
+      setTimeout(run, speed);
     }
   }
 
-  type();
+  run();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -443,16 +440,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     input.value = "";
 
+    // user
     msgs.innerHTML += `<div><b>You:</b> ${text}</div>`;
 
+    // bot placeholder
     const botDiv = document.createElement("div");
     const span = document.createElement("span");
 
-    botDiv.innerHTML = "<b>Bot:</b> ";
+    botDiv.appendChild(document.createTextNode("Bot: "));
     botDiv.appendChild(span);
     msgs.appendChild(botDiv);
-
-    msgs.innerHTML += "<hr>";
 
     try {
       const res = await fetch(
@@ -466,13 +463,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const raw = await res.json();
 
-      // 🔥 FIX: AWS API Gateway body parsing
-      const data =
-        typeof raw.body === "string"
-          ? JSON.parse(raw.body)
-          : raw;
+      // 🔥 SAFE FIX (ei enää body-checkiä)
+      const reply = raw.reply || "Ei vastausta 😅";
 
-      typeText(span, data.reply || "Ei vastausta");
+      typeText(span, reply);
 
     } catch (err) {
       typeText(span, "error 😅");
