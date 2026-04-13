@@ -374,6 +374,9 @@ section {
   </div>
 </div>
 
+
+createDots();
+
 <script>
 /* DOTS */
 function createDots(){
@@ -399,15 +402,13 @@ function createDots(){
 }
 createDots();
 
-<script>
-/* CHAT FIX */
+/* CHAT */
 document.getElementById("send").addEventListener("click", async () => {
   const input = document.getElementById("msg");
   const text = input.value;
 
   if (!text) return;
 
-  // 🔥 TYHJENNÄ HETI
   input.value = "";
 
   const res = await fetch("https://9i38yt108h.execute-api.eu-north-1.amazonaws.com/prod/chat", {
@@ -423,22 +424,6 @@ document.getElementById("send").addEventListener("click", async () => {
      <div><b>Bot:</b> ${data.reply}</div>
      <hr>`;
 });
-</script>
-function createDots(containerId) {
-  const container = document.querySelector(containerId);
-
-  for (let i = 0; i < 60; i++) {
-    const dot = document.createElement("div");
-    dot.className = "dot";
-    dot.style.left = Math.random() * 60 + "px";
-    dot.style.animationDuration = (5 + Math.random() * 10) + "s";
-    dot.style.opacity = Math.random() * 0.4;
-    container.appendChild(dot);
-  }
-}
-
-createDots(".left-dots");
-createDots(".right-dots");
 </script>
 </body>
 </html>
