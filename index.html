@@ -385,32 +385,32 @@ section {
 
 <script>
 function createDots(){
-  const left=document.querySelector(".left-dots");
-  const right=document.querySelector(".right-dots");
+  const left = document.querySelector(".left-dots");
+  const right = document.querySelector(".right-dots");
 
-  if (!left || !right) return; // 🛡️ tärkeä
+  if (!left || !right) return;
 
-  for(let i=0;i<60;i++){
-    let d1=document.createElement("div");
-    let d2=document.createElement("div");
+  for (let i = 0; i < 60; i++) {
+    let d1 = document.createElement("div");
+    let d2 = document.createElement("div");
 
-    d1.className="dot";
-    d2.className="dot";
+    d1.className = "dot";
+    d2.className = "dot";
 
-    d1.style.left=Math.random()*60+"px";
-    d2.style.right=Math.random()*60+"px";
+    d1.style.left = Math.random() * 60 + "px";
+    d2.style.right = Math.random() * 60 + "px";
 
-    d1.style.top=Math.random()*100+"vh";
-    d2.style.top=Math.random()*100+"vh";
+    d1.style.top = Math.random() * 100 + "vh";
+    d2.style.top = Math.random() * 100 + "vh";
 
-    // 🔥 tärkeä: eri nopeudet
-    d1.style.animationDuration = (5 + Math.random()*10) + "s";
-    d2.style.animationDuration = (5 + Math.random()*10) + "s";
+    d1.style.animationDuration = (5 + Math.random() * 10) + "s";
+    d2.style.animationDuration = (5 + Math.random() * 10) + "s";
 
     left.appendChild(d1);
     right.appendChild(d2);
   }
 }
+
 createDots();
 
 /* CHAT */
@@ -424,7 +424,6 @@ async function sendMessage() {
 
   input.value = "";
 
-  // lisää käyttäjän viesti heti
   msgs.innerHTML += `<div><b>You:</b> ${text}</div>`;
 
   try {
@@ -441,23 +440,25 @@ async function sendMessage() {
     msgs.innerHTML += `<div><b>Bot:</b> error 😅</div><hr>`;
   }
 
-  // scroll aina alas
   msgs.scrollTop = msgs.scrollHeight;
 }
 
 sendBtn.addEventListener("click", sendMessage);
 
-/* ENTER SUPPORT */
 input.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
-    sendMessage();
-  }
+  if (e.key === "Enter") sendMessage();
 });
-document.getElementById("intro").addEventListener("animationend", () => {
+
+/* INTRO -> SHOW CHAT SAFELY */
+const intro = document.getElementById("intro");
 const chat = document.getElementById("chatbot");
-chat.style.opacity = "1";
-chat.style.pointerEvents = "auto";
-});
+
+if (intro && chat) {
+  intro.addEventListener("animationend", () => {
+    chat.style.opacity = "1";
+    chat.style.pointerEvents = "auto";
+  });
+}
 </script>
 
 </body>
