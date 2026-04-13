@@ -428,56 +428,64 @@ function typeText(element, text, speed = 15) {
   type();
 }
 
-/* CHAT */
-const input = document.getElementById("msg");
-const sendBtn = document.getElementById("send");
-const msgs = document.getElementById("msgs");
-const chat = document.getElementById("chatbot");
-const intro = document.getElementById("intro");
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.getElementById("msg");
+  const sendBtn = document.getElementById("send");
+  const msgs = document.getElementById("msgs");
+  const chat = document.getElementById("chatbot");
+  const intro = document.getElementById("intro");
 
-async function sendMessage() {
-  const text = input.value.trim();
-  if (!text) return;
+  createDots();
 
-  input.value = "";
+  async function sendMessage() {
+    const text = input.value.trim();
+    if (!text) return;
 
-  msgs.innerHTML += `<div><b>You:</b> ${text}</div>`;
+    input.value = "";
 
-  const botDiv = document.createElement("div");
-  const span = document.createElement("span");
+    msgs.innerHTML += `<div><b>You:</b> ${text}</div>`;
 
-  botDiv.innerHTML = "<b>Bot:</b> ";
-  botDiv.appendChild(span);
-  msgs.appendChild(botDiv);
+    const botDiv = document.createElement("div");
+    const span = document.createElement("span");
 
-  msgs.innerHTML += "<hr>";
+    botDiv.innerHTML = "<b>Bot:</b> ";
+    botDiv.appendChild(span);
+    msgs.appendChild(botDiv);
 
-  try {
-    const res = await fetch("https://9i38yt108h.execute-api.eu-north-1.amazonaws.com/prod/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: text })
-    });
+    msgs.innerHTML += "<hr>";
 
-    const data = await res.json();
-    typeText(span, data.reply || "...");
-  } catch (err) {
-    typeText(span, "error 😅");
+    try {
+      const res = await fetch(
+        "https://9i38yt108h.execute-api.eu-north-1.amazonaws.com/prod/chat",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: text })
+        }
+      );
+
+      const raw = await res.json();
+
+      // 🔥 FIX: AWS API Gateway body parsing
+      const data =
+        typeof raw.body === "string"
+          ? JSON.parse(raw.body)
+          : raw;
+
+      typeText(span, data.reply || "Ei vastausta");
+
+    } catch (err) {
+      typeText(span, "error 😅");
+    }
+
+    msgs.scrollTop = msgs.scrollHeight;
   }
 
-  msgs.scrollTop = msgs.scrollHeight;
-}
+  sendBtn.addEventListener("click", sendMessage);
 
-/* EVENTS */
-sendBtn.addEventListener("click", sendMessage);
-
-input.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") sendMessage();
-});
-
-/* INIT */
-document.addEventListener("DOMContentLoaded", () => {
-  createDots();
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") sendMessage();
+  });
 
   if (intro && chat) {
     intro.addEventListener("animationend", () => {
