@@ -384,15 +384,16 @@ section {
 
 
 <script>
-function createDots(){
+/* FLOATING DOTS */
+function createDots() {
   const left = document.querySelector(".left-dots");
   const right = document.querySelector(".right-dots");
 
   if (!left || !right) return;
 
   for (let i = 0; i < 60; i++) {
-    let d1 = document.createElement("div");
-    let d2 = document.createElement("div");
+    const d1 = document.createElement("div");
+    const d2 = document.createElement("div");
 
     d1.className = "dot";
     d2.className = "dot";
@@ -411,29 +412,28 @@ function createDots(){
   }
 }
 
-createDots();
+/* TYPE EFFECT */
+function typeText(element, text, speed = 15) {
+  element.textContent = "";
+  let i = 0;
 
-<script>
+  function type() {
+    if (i < text.length) {
+      element.textContent += text[i];
+      i++;
+      setTimeout(type, speed);
+    }
+  }
+
+  type();
+}
+
 /* CHAT */
 const input = document.getElementById("msg");
 const sendBtn = document.getElementById("send");
 const msgs = document.getElementById("msgs");
-
-/* typing effect */
-function typeText(element, text, speed = 20) {
-  element.innerHTML = "";
-  let i = 0;
-
-  function typing() {
-    if (i < text.length) {
-      element.innerHTML += text.charAt(i);
-      i++;
-      setTimeout(typing, speed);
-    }
-  }
-
-  typing();
-}
+const chat = document.getElementById("chatbot");
+const intro = document.getElementById("intro");
 
 async function sendMessage() {
   const text = input.value.trim();
@@ -443,7 +443,6 @@ async function sendMessage() {
 
   msgs.innerHTML += `<div><b>You:</b> ${text}</div>`;
 
-  /* bot placeholder */
   const botDiv = document.createElement("div");
   const span = document.createElement("span");
 
@@ -461,10 +460,7 @@ async function sendMessage() {
     });
 
     const data = await res.json();
-
-    // typing effect
-    typeText(span, data.reply);
-
+    typeText(span, data.reply || "...");
   } catch (err) {
     typeText(span, "error 😅");
   }
@@ -472,23 +468,22 @@ async function sendMessage() {
   msgs.scrollTop = msgs.scrollHeight;
 }
 
+/* EVENTS */
 sendBtn.addEventListener("click", sendMessage);
 
 input.addEventListener("keydown", (e) => {
   if (e.key === "Enter") sendMessage();
 });
 
-/* INTRO -> SHOW CHAT SAFELY */
-const intro = document.getElementById("intro");
-const chat = document.getElementById("chatbot");
+/* INIT */
+document.addEventListener("DOMContentLoaded", () => {
+  createDots();
 
-if (intro && chat) {
-  intro.addEventListener("animationend", () => {
-    chat.style.opacity = "1";
-    chat.style.pointerEvents = "auto";
-  });
-}
+  if (intro && chat) {
+    intro.addEventListener("animationend", () => {
+      chat.style.opacity = "1";
+      chat.style.pointerEvents = "auto";
+    });
+  }
+});
 </script>
-
-</body>
-</html>
