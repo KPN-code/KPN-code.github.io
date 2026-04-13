@@ -412,7 +412,7 @@ function createDots(){
   }
 }
 createDots();
-<script>
+
 /* CHAT */
 const input = document.getElementById("msg");
 const sendBtn = document.getElementById("send");
@@ -452,6 +452,11 @@ input.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     sendMessage();
   }
+});
+document.getElementById("intro").addEventListener("animationend", () => {
+const chat = document.getElementById("chatbot");
+chat.style.opacity = "1";
+chat.style.pointerEvents = "auto";
 });
 </script>
 
