@@ -413,10 +413,27 @@ function createDots(){
 
 createDots();
 
+<script>
 /* CHAT */
 const input = document.getElementById("msg");
 const sendBtn = document.getElementById("send");
 const msgs = document.getElementById("msgs");
+
+/* typing effect */
+function typeText(element, text, speed = 20) {
+  element.innerHTML = "";
+  let i = 0;
+
+  function typing() {
+    if (i < text.length) {
+      element.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typing, speed);
+    }
+  }
+
+  typing();
+}
 
 async function sendMessage() {
   const text = input.value.trim();
@@ -425,6 +442,16 @@ async function sendMessage() {
   input.value = "";
 
   msgs.innerHTML += `<div><b>You:</b> ${text}</div>`;
+
+  /* bot placeholder */
+  const botDiv = document.createElement("div");
+  const span = document.createElement("span");
+
+  botDiv.innerHTML = "<b>Bot:</b> ";
+  botDiv.appendChild(span);
+  msgs.appendChild(botDiv);
+
+  msgs.innerHTML += "<hr>";
 
   try {
     const res = await fetch("https://9i38yt108h.execute-api.eu-north-1.amazonaws.com/prod/chat", {
@@ -435,9 +462,11 @@ async function sendMessage() {
 
     const data = await res.json();
 
-    msgs.innerHTML += `<div><b>Bot:</b> ${data.reply}</div><hr>`;
+    // typing effect
+    typeText(span, data.reply);
+
   } catch (err) {
-    msgs.innerHTML += `<div><b>Bot:</b> error 😅</div><hr>`;
+    typeText(span, "error 😅");
   }
 
   msgs.scrollTop = msgs.scrollHeight;
