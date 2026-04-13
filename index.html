@@ -412,28 +412,48 @@ function createDots(){
   }
 }
 createDots();
+<script>
 /* CHAT */
-document.getElementById("send").addEventListener("click", async () => {
-  const input = document.getElementById("msg");
-  const text = input.value;
+const input = document.getElementById("msg");
+const sendBtn = document.getElementById("send");
+const msgs = document.getElementById("msgs");
 
+async function sendMessage() {
+  const text = input.value.trim();
   if (!text) return;
 
   input.value = "";
 
-  const res = await fetch("https://9i38yt108h.execute-api.eu-north-1.amazonaws.com/prod/chat", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message: text })
-  });
+  // lisää käyttäjän viesti heti
+  msgs.innerHTML += `<div><b>You:</b> ${text}</div>`;
 
-  const data = await res.json();
+  try {
+    const res = await fetch("https://9i38yt108h.execute-api.eu-north-1.amazonaws.com/prod/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: text })
+    });
 
-  document.getElementById("msgs").innerHTML +=
-    `<div><b>You:</b> ${text}</div>
-     <div><b>Bot:</b> ${data.reply}</div>
-     <hr>`;
+    const data = await res.json();
+
+    msgs.innerHTML += `<div><b>Bot:</b> ${data.reply}</div><hr>`;
+  } catch (err) {
+    msgs.innerHTML += `<div><b>Bot:</b> error 😅</div><hr>`;
+  }
+
+  // scroll aina alas
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+sendBtn.addEventListener("click", sendMessage);
+
+/* ENTER SUPPORT */
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    sendMessage();
+  }
 });
 </script>
+
 </body>
 </html>
