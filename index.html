@@ -378,10 +378,11 @@ section {
 createDots();
 
 <script>
-/* DOTS */
 function createDots(){
   const left=document.querySelector(".left-dots");
   const right=document.querySelector(".right-dots");
+
+  if (!left || !right) return; // 🛡️ tärkeä
 
   for(let i=0;i<25;i++){
     let d1=document.createElement("div");
@@ -396,11 +397,14 @@ function createDots(){
     d1.style.top=Math.random()*100+"vh";
     d2.style.top=Math.random()*100+"vh";
 
+    // 🔥 tärkeä: eri nopeudet
+    d1.style.animationDuration = (5 + Math.random()*10) + "s";
+    d2.style.animationDuration = (5 + Math.random()*10) + "s";
+
     left.appendChild(d1);
     right.appendChild(d2);
   }
 }
-createDots();
 
 /* CHAT */
 document.getElementById("send").addEventListener("click", async () => {
