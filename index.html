@@ -101,40 +101,51 @@ body {
 }
 /* NAV */
 
+/* YLÄPALKKI */
 .nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  /*Käytetään intron vihreää sävyä */
-  background: var(--accent); 
+  background: var(--accent); /* Intron vihreä */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.6rem 1.5rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  z-index: 999;
-  /* LISÄYS: Varmistetaan, että yläpalkin teksti on vaaleaa */
-  color: #e6e2d8; 
+  padding: 0.8rem 2rem; /* Hieman lisää tilaa */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 1000; /* Varmistetaan että pysyy päällä */
+  color: #e6e2d8;
 }
 
-/* Varmistetaan, että myös linkit muuttuvat vaaleiksi */
+/* LINKKILISTA */
+.nav-links {
+  display: flex;
+  flex-direction: row; /* Pakottaa linkit rinnakkain */
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 .nav-links a {
   text-decoration: none;
-  color: #e6e2d8; /* Sama vaalea sävy kuin intron logossa */
+  color: #e6e2d8;
   font-weight: 500;
+  font-size: 0.95rem;
   transition: opacity 0.3s;
+  white-space: nowrap; /* Estää nimen jakautumisen kahdelle riville */
 }
 
-/* Pieni hover-efekti linkeille */
 .nav-links a:hover {
   opacity: 0.7;
 }
 
-/* HERO */
+/* KORJAUS*/
 header {
-  padding-top: 90px;
+  padding-top: 120px; /* Kasvatettu 90px -> 120px */
 }
+
+
 
 .hero {
   max-width: 900px;
