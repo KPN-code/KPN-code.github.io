@@ -390,15 +390,15 @@ function createDots() {
 
   if (!left || !right) return;
 
-  for (let i = 0; i < 90; i++) {
+  for (let i = 0; i < 150; i++) {
     const d1 = document.createElement("div");
     const d2 = document.createElement("div");
 
     d1.className = "dot";
     d2.className = "dot";
 
-    d1.style.left = Math.random() * 120 + "px";
-    d2.style.right = Math.random() * 120 + "px";
+    d1.style.left = Math.random() * 180 + "px";
+    d2.style.right = Math.random() * 180 + "px";
 
     d1.style.top = Math.random() * 100 + "vh";
     d2.style.top = Math.random() * 100 + "vh";
